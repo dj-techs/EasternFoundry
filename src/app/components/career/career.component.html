@@ -1,0 +1,18 @@
+<section class="timeline">
+  <ul>
+    <li><div class="career-year">{{current}}</div></li>
+    <li *ngFor="let data of Data" id="{{data['year']}}">
+        <div class="career-year" id="c-year-{{data.year}}" (click)="refresh(data.year)">{{data['year']}}</div>
+        <div class="career-brief hidden" id="c-brief-{{data.year}}">
+            <p class="job-title">{{data.detail['title']}}</p>
+            <p class="company">{{data.detail['company']}}</p>
+            <p class="from">{{data.detail['from']}}</p>
+        </div>
+        <div class="career-detail hidden" id="c-detail-{{data.year}}">
+            <p class="job-title">{{data.detail['title']}}</p>
+            <p class="from">{{data.detail['from']}}</p>
+            <textarea class="career" readonly>{{data.detail['career']}}</textarea>
+        </div>
+    </li>
+  </ul>
+</section>

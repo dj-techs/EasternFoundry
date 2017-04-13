@@ -1,0 +1,309 @@
+/*styles for profile content only*/
+
+.basic-info {
+    padding-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+#user-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    border: 2px solid #757575;
+}
+
+#user-photo-job {
+    width: calc(100% - 160px);
+}
+
+#user-photo-job p {    
+    height: 60px;
+    margin-top: 15px;
+    margin-left: 10px;
+    line-height: 30px;
+    text-align: left;
+}
+
+#user-job {
+    padding-top: 15px;
+}
+
+#user-photo-job p:hover {
+    color: #4070c0;
+}
+
+#user-contact div {
+    height: 50px;
+    line-height: 50px;
+}
+
+#user-contact img {
+    height: 45px;
+    padding-left: 10px;
+    border-left: 4px solid #3e3e3e;
+}
+
+#user-contact div:hover img {
+    border-left: 4px solid #4373c3;
+}
+
+#user-contact div p {
+    width: 230px;
+    text-align: left;
+    margin-left: 10px;
+}
+
+#user-contact div:hover p {
+    color: #4373c3;
+}
+
+#user-info {
+    width: 300px;
+    height: 150px;
+}
+
+#user-info div {
+    width: 285px;
+    height: 65px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    border-left: 4px solid #3e3e3e;
+}
+
+#user-info div:hover {
+    color: #4373c3;
+}
+
+#user-info-date {
+    line-height: 32px;
+}
+
+#user-info-accuracy {
+    line-height: 65px;
+}
+
+.certification {
+    width: 100%;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.carousel .item {
+    border: 2px solid white;
+    border-radius: 5px;
+    height: 300px;
+}
+
+.item img {
+    border: 2px solid white;
+    border-radius: 5px;
+    width: 100%;
+    height: 300px;
+}
+
+.carousel-inner{
+    border: 2px solid white;
+    border-radius: 5px;
+    height: 300px;
+}
+
+.div-title {
+    width: 100%;
+    display: inline-block;
+}
+
+.div-title * {
+    display: inline;
+}
+
+.div-title img {
+    width: 100px;
+    height: 90px;
+}
+
+.div-title p {
+    font-size: 28px;
+}
+
+.div-title div {
+    width: calc(100% - 320px);    
+    height: 3px; 
+    margin-bottom: 8px;
+    background-color: #827e7c; 
+    display: inline-block;
+}
+
+.capa-main {
+    display: inline-block;
+}
+
+.capa-main .div-comment{
+    margin: 0;
+    height: 45px;
+    line-height: 45px;
+}
+
+.capa-main .colorbox {
+    margin: 13px 10px 12px 10px;
+}
+
+.capa-main .capa-black {
+    background-color: black;
+}
+
+.capa-main .capa-grey {
+    background-color: grey;
+}
+
+.capa-main .capa-lightgray {
+    background-color: lightgrey;
+}
+
+.capa-main .capa-darkgray {
+    background-color: darkgray;
+}
+
+.row {
+    margin-top: 50px;
+}
+
+.capa-pre {
+    height: 300px;
+    padding: 100px 10px 100px 10px;
+    border-right: 3px solid #827e7c;
+    text-align: center;
+    margin: auto;
+}
+
+.capa-pre p {
+    color: #313131;
+    font-size: 24px;
+}
+
+.capa-chart {
+    width: 300px;
+    height: 300px;
+}
+
+.capabilities .text-container {
+    min-height: 300px;
+}
+
+.experience .div-title div{
+    width: calc(100% - 440px);
+}
+
+#exp-main-title {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: #2070be;
+}
+#exp-sub1-title {
+    text-align: center;
+    line-height: 255px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #2070be;
+}
+#exp-sub2-title {
+    text-align: center;
+    line-height: 255px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #2070be;
+}
+
+.chart-comment {
+    width: 520px;
+    height: 100px;
+    margin-top: -10px;
+    margin-left: 120px;
+    padding: 20px;
+    background-color: #f8cbac;
+    border-radius: 10px;
+    border: 3px solid #198fcf;
+    display: inline-block;
+}
+
+.div-comment {
+    width: 235px;
+    height: 20px;
+    margin-bottom: 15px;
+    line-height: 20px;
+    display: inline-block;
+}
+
+.colorbox {
+    width: 30px;
+    height: 20px;
+    margin-right: 15px;
+}
+
+.g-service {
+    background-color: #203864;
+}
+
+.p-written {
+    background-color: #b4c7e7;
+}
+
+.contractor {
+    background-color: #2e5593;
+}
+
+.relationship {
+    background-color: #8eaadc;
+}
+
+.career .div-title div{
+    width: calc(100% - 235px);
+}
+
+.strength .div-title p{
+    color: #198fcf; 
+}
+
+.strength .div-title div{
+    background-color: #0e6daf; 
+    width: calc(100% - 272px);
+}
+
+.strength doughnut-chart-demo {
+    width: 500px;
+    margin: auto;
+}
+
+.strength BarChartComponent {
+    width: 500px;
+    margin: auto;
+}
+
+.availability .div-title div{
+    width: calc(100% - 298px);
+}
+
+.availability .chart-comment {
+    margin-left: 390px;
+    margin-top: -22px;
+    height: 60px;
+}
+
+.unavailable {
+    background-color: #7f7f7f;
+}
+
+.available {
+    background-color: #0b6ec1;
+}
+
+availablebar {
+    width: 560px;
+    height: 20px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    display: inherit;
+}

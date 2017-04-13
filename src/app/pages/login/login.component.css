@@ -1,0 +1,16 @@
+.main {
+    min-width: 300px;
+    min-height: 300px;
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    margin-top: calc(50vh - 150px);
+}
+
+.input-group {
+    margin-top: 10px;
+}
+
+button {
+    margin-top: 10px;
+}
