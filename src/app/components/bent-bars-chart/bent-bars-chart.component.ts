@@ -61,8 +61,10 @@ export class BentBarsChartComponent implements AfterViewInit {
 
     function fieldTransition() {
         let field = d3.select(this).transition();
-        let color = field['_id']*spacing*155;
+        let color = Math.floor(field['_id']*spacing*155);
         let str_color = 'rgb(' + color.toString() + ',' + color.toString() + ',' + color.toString() + ')';
+
+        console.log(str_color);
 
         field.select('.arc-body')
             .attrTween('d', arcTween(arcBody))

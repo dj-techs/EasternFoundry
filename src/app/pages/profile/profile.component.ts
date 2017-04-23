@@ -94,9 +94,9 @@ export class ProfileComponent implements OnInit {
     'Relationships'
   ];
         
-  public expMainValues: number[] = [10, 30, 80, 90, 50, 60, 70];
-  public expSub1Values: number[] = [10, 30, 50, 60, 70];
-  public expSub2Values: number[] = [10, 30, 80];
+  public expMainValues: number[] = [10, 30, 80, 90];
+  public expSub1Values: number[] = [10, 30, 50, 60];
+  public expSub2Values: number[] = [10, 30, 80, 70];
 
   public careerCurrent: number = 2017;
 
@@ -161,14 +161,11 @@ export class ProfileComponent implements OnInit {
       title: '777'
     }];
 
+  
+
   public max: number = 5;
   public rate: number = 4;
   public isReadonly: boolean = false;
-
-  public myInterval: number = 1500;
-  public slides: any[] = [];
-  public activeSlideIndex: number;
-  public noWrapSlides: boolean = false;
 
   public overStar: number;
   public percent: number;

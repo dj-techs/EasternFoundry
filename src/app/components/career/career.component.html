@@ -1,6 +1,6 @@
 <section class="timeline">
   <ul>
-    <li><div class="career-year">{{current}}</div></li>
+    <li><div class="career-year" [style.margin-top] = "'32px'">{{current}}</div></li>
     <li *ngFor="let data of Data" id="{{data['year']}}">
         <div class="career-year" id="c-year-{{data.year}}" (click)="refresh(data.year)">{{data['year']}}</div>
         <div class="career-brief hidden" id="c-brief-{{data.year}}">

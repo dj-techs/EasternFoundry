@@ -27,7 +27,7 @@ export class ExpChartComponent implements AfterViewInit {
           fields.push({innerRadius: 0.2, startAngle:spacing2*index, endAngle: this.values[index]>50?spacing2*index+spacing2:spacing2*index+spacing2*this.values[index]/50, text: this.names[index%4]});
       }
       for( let index = 0; index < this.values.length; index++){
-          fields.push({innerRadius: 0.49, startAngle:spacing2*index, endAngle: this.values[index]>50?spacing2*index+spacing2*(this.values[index]-50)/50:spacing2*index, text: this.names[index%4]});
+          fields.push({innerRadius: 0.5, startAngle:spacing2*index, endAngle: this.values[index]>50?spacing2*index+spacing2*(this.values[index]-50)/50:spacing2*index, text: this.names[index%4]});
       }
 
     let radius = Math.min(this.width, this.height) / 2;
@@ -67,10 +67,12 @@ export class ExpChartComponent implements AfterViewInit {
     function fieldTransition() {
         let field = d3.select(this).transition();
 
-        let color: string[] = ['rgb(32,56,100)', 'rgb(32,56,56)', 'rgb(32,100,100)', 'rgb(32,100,56)', 'rgb(32,100,32)', 'rgb(143,116,220)'];
+        let color: string[] = ['rgb(0,178,255)', 'rgb(23,185,255)', 'rgb(46,192,255)', 'rgb(69,199,255)', 'rgb(92,206,255)', 'rgb(115,213,255)'];
 
         field.select('.arc-body')
             .attrTween('d', arcTween(arcBody))
+            .style('stroke-width', 2)
+            .style('stroke', 'white')
             .style('fill', color[field['_id']%6]);
     }
 

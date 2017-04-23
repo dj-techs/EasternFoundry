@@ -1,3 +1,291 @@
-<p>
-  corporate-profile works!
-</p>
+<div class="container">
+  <div class="basic-info col-xs-12 clear">
+    <div class="col-xs-12 srow div-title">
+        <p class="left">{{ companyName }}</p>
+        <div></div>
+    </div>
+    <div class="main clear">
+        <img id="company-photo" src="../assets/img/profile/user-prototype-1.png" class="left">
+        <div class="left">
+            <div class="srow"><img src="../assets/img/glyphicon/email-1.png" class="left"><p class="left">Info@testcompany</p></div>
+            <div class="srow"><img src="../assets/img/glyphicon/phone-2.png" class="left"><p class="left">(202) 725-7483</p></div>
+            <div class="srow"><img src="../assets/img/glyphicon/post-1.png" class="left"><p class="left">Washington DC</p></div>
+        </div>
+        <div class="right">
+            <div class="srow"><p class="left two-p" [style.line-height]="'25px'">Information<br>updated</p><p class="right two-p" [style.text-align]="'right'">Dec, 2016</p></div>
+            <div class="srow"><p class="left two-p" [style.line-height]="'25px'">Information<br>accuracy</p><rating [(ngModel)]="rate" [max]="5" [readonly]="isReadonly" class="right"></rating></div>
+            <div class="srow"><img src="../assets/img/glyphicon/post-1.png" class="left"><p class="left">Service disable vetran owned</p></div>
+        </div>
+    </div>    
+  </div>
+
+  <div class="leadership col-xs-12 clear">
+      <div class="col-xs-12 srow div-title">
+          <p class="left">LEADERSHIP</p>
+          <div></div>
+      </div>
+      <div class="main clear">
+          <div class="halfwidth left">
+              <img src="../assets/img/profile/user-prototype-1.png" class="left" [style.width]="'150px'">
+              <p class="srow">Andrew Chang</p>
+              <p class="srow">CEO</p>
+              <p class="srow">Chang@eastern-foundry.com</p>
+          </div>
+          <div class="halfwidth right">
+              <img src="../assets/img/profile/user-prototype-1.png" class="left" [style.width]="'150px'">
+              <p class="srow">Geoff Orazem</p>
+              <p class="srow">CSO</p>
+              <p class="srow">Geoff@eastern-foundry.com</p>
+          </div>
+      </div>    
+  </div>
+
+  <div class="div-tab col-xs-12 clear">
+      <div [style.width] = "'80%'" [style.margin-left]="'10%'">
+          <div class="halfwidth left" id="serviceTab" (click)='showService()'>Services</div>
+          <div class="halfwidth right" id="productTab" (click)='showProduct()'>Products</div>
+      </div>
+  </div>
+
+  <!--<div class="product col-xs-12 clear">
+      <div class="div-title col-xs-12">
+          <img src="./assets/img/product.png">
+          <p>PRODUCTS</p>
+          <div></div>
+      </div>
+      <div class="row main">
+          <pie-chart></pie-chart>
+          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12 text-container" [style.height]="'312px'">
+              <div class="col-xs-12" [style.overflow] = "'auto'" [style.height]="'272px'">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum 
+              </div>
+          </div>
+      </div>
+      <div class="row main">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-container" [style.height]="'300px'">
+              <div class="col-xs-12" [style.overflow] = "'auto'" [style.height]="'260px'">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum 
+              </div>
+          </div>
+      </div>
+      <div class="row main">
+          <button class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-xs-12 left">More Information</button>
+          <button class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-xs-12 right">View Demo</button>
+      </div>
+  </div>
+
+  <div class="service col-xs-12 clear">
+      <div class="div-title col-xs-12">
+          <img src="./assets/img/service.png">
+          <p>ADDITIONAL SERVICES</p>
+          <div></div>
+      </div>
+      <div class="main srow">
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12"><p class="col-xl-11 col-lg-11 col-md-11 col-sm-11 col-xs-11">Provide Trainig?</p><input type="checkbox" class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+          </div>
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12"><p class="col-xl-11 col-lg-11 col-md-11 col-sm-11 col-xs-11">Product Customization?</p><input type="checkbox" class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+          </div>
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12"><p class="col-xl-11 col-lg-11 col-md-11 col-sm-11 col-xs-11">Ongoing Maintenance</p><input type="checkbox" class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+          </div>
+      </div>
+  </div>
+
+  <div class="customer col-xs-12 clear">
+      <div class="div-title col-xs-12">
+          <img src="./assets/img/customer.png">
+          <p>CUSTOMERS USING THE PRODUCT</p>
+          <div></div>
+      </div>
+      <div class="main">
+          <div class="row col-xs-12 text-container">
+              <div class="left" [style.width]="'120px'">
+                  <p class="col-xs-12">DEFENSE</p>
+                  <img src="./assets/img/defense.png" [style.width]="'100px'" [style.margin-left]="'10px'">
+              </div>
+              <img src="./assets/img/user.png" [style.width]="'100px'">
+              <img src="./assets/img/user.png" [style.width]="'100px'">
+              <img src="./assets/img/user.png" [style.width]="'100px'">
+              <img src="./assets/img/user.png" [style.width]="'100px'">
+              <img src="./assets/img/user.png" [style.width]="'100px'">
+          </div>
+          <div class="row col-xs-12 text-container">
+              <div class="left" [style.width]="'120px'">
+                  <p class="col-xs-12">CIVILIAN</p>
+                  <img src="./assets/img/civilian.png" [style.width]="'100px'" [style.margin-left]="'10px'">
+              </div>
+              <img src="./assets/img/user.png" [style.width]="'100px'">
+              <img src="./assets/img/user.png" [style.width]="'100px'">
+              <img src="./assets/img/user.png" [style.width]="'100px'">
+          </div>
+          <div class="row col-xs-12 text-container">
+              <div class="left" [style.width]="'120px'">
+                  <p class="col-xs-12">COMMERCIA</p>
+                  <img src="./assets/img/commercia.png" [style.width]="'100px'" [style.margin-left]="'10px'">
+              </div>
+              <img src="./assets/img/user.png" [style.width]="'100px'">
+              <img src="./assets/img/user.png" [style.width]="'100px'">
+          </div>
+      </div>
+  </div>
+
+  <div class="performance col-xs-12 clear">
+      <div class="div-title col-xs-12">
+          <img src="./assets/img/performance.png">
+          <p>PAST PERFORMANCE</p>
+          <div></div>
+      </div>
+      <div class="main clear">
+          <div class="pp-slide">
+              <img src="./assets/img/temp.png" class="col-xs-12">
+              <p class="col-xs-12">ENERGY APP DEVELOPMENT AND DEPLOYMENT</p>
+              <p class="halfwidth left"><strong>Client</strong><br>Airforce</p>
+              <p class="halfwidth right"><strong>Project</strong><br>App development</p>
+              <button>More Information</button> 
+          </div>
+          <div class="pp-slide">
+              <img src="./assets/img/temp.png" class="col-xs-12">
+              <p class="col-xs-12">ENERGY APP DEVELOPMENT AND DEPLOYMENT</p>
+              <p class="halfwidth left"><strong>Client</strong><br>Airforce</p>
+              <p class="halfwidth right"><strong>Project</strong><br>App development</p>
+              <button>More Information</button> 
+          </div>
+          <div class="pp-slide">
+              <img src="./assets/img/temp.png" class="col-xs-12">
+              <p class="col-xs-12">ENERGY APP DEVELOPMENT AND DEPLOYMENT</p>
+              <p class="halfwidth left"><strong>Client</strong><br>Airforce</p>
+              <p class="halfwidth right"><strong>Project</strong><br>App development</p>
+              <button>More Information</button> 
+          </div>
+      </div>
+  </div>
+
+  <div class="cert col-xs-12 clear">
+      <div class="div-title col-xs-12">
+          <img src="./assets/img/cert.png" class="left">
+          <p><strong>CERTS, QUALS</strong><br>AWARDS & CLEARANCES</p>
+          <div></div>
+      </div>
+      <div class="row main">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-container" [style.height]="'300px'">
+              <div class="col-xs-12" [style.overflow] = "'auto'" [style.height]="'260px'">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum 
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="vehicle col-xs-12 clear">
+      <div class="div-title col-xs-12">
+          <img src="./assets/img/vehicle.png">
+          <p>VEHICLES</p>
+          <div></div>
+      </div>
+      <div class="row main">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-container" [style.height]="'300px'">
+              <div class="col-xs-12" [style.overflow] = "'auto'" [style.height]="'260px'">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum 
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="schedule col-xs-12 clear">
+      <div class="div-title col-xs-12">
+          <img src="./assets/img/schedule.png">
+          <p>SCHEDULES</p>
+          <div></div>
+      </div>
+      <div class="row main">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-container" [style.height]="'300px'">
+              <div class="col-xs-12" [style.overflow] = "'auto'" [style.height]="'260px'">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum 
+              </div>
+          </div>
+      </div>
+  </div>-->
+</div>

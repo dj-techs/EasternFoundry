@@ -27,6 +27,8 @@ import { BentBarsChartComponent } from './components/bent-bars-chart/bent-bars-c
 import { ColorCommentBoxComponent } from './components/color-comment-box/color-comment-box.component';
 import { ExpChartComponent } from './components/exp-chart/exp-chart.component';
 import { CareerComponent } from './components/career/career.component';
+import { BarchartComponent } from './components/barchart/barchart.component';
+import { AvailablebarComponent } from './components/availablebar/availablebar.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { CareerComponent } from './components/career/career.component';
     BentBarsChartComponent,
     ColorCommentBoxComponent,
     ExpChartComponent,
-    CareerComponent
+    CareerComponent,
+    BarchartComponent,
+    AvailablebarComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -51,6 +55,7 @@ import { CareerComponent } from './components/career/career.component';
     CarouselModule.forRoot(),
     BsDropdownModule.forRoot(),
     ButtonsModule.forRoot(),
+    ChartsModule,
     BrowserModule,
     FormsModule,
     HttpModule,

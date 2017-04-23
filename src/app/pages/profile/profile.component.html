@@ -113,7 +113,7 @@
         <p>STRENGTH</p>
         <div class="md-8"></div>
     </div>
-    <!--<BarChartComponent></BarChartComponent>-->
+    <app-barchart></app-barchart>
 </div>
 
 <div class="availability col-xs-12 clear">
@@ -122,15 +122,11 @@
         <p>AVAILABILITY</p>
         <div class="md-8"></div>
     </div>
-    <div class="chart-comment col-xs-12">
-        <div class="div-comment"><div class='colorbox unavailable left'></div><p>Unavailable</p></div>
-        <div class="div-comment"><div class='colorbox available left'></div><p>Available</p></div>
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 text-container">
+        <app-color-comment-box color='#7f7f7f' text='unavilable' class="col-xs-12 col-sm-6 col-md-6"></app-color-comment-box>
+        <app-color-comment-box color='#0b6ec1' text='available' class="col-xs-12 col-sm-6 col-md-6"></app-color-comment-box>
     </div>
-     <!--<availablebar></availablebar>-->
+     <app-availablebar></app-availablebar>
 </div>
-<!--
-<chart-comment [cols]='temp1' [data]='temp2' [width]='200' [divID]='tempp1'></chart-comment>
 
-<chart-comment [cols]='temp3' [data]='temp4' [width]='300' [divID]='tempp2'></chart-comment>
--->
 </div>
