@@ -7,9 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { AddProfileComponent } from './pages/add-profile/add-profile.component';
 import { AddAccountComponent } from './pages/add-account/add-account.component';
-import { AddAccountDetailComponent } from './pages/add-account-detail/add-account-detail.component';
 import { CorporateProfileComponent } from './pages/corporate-profile/corporate-profile.component';
 import { PastPerformanceComponent } from './pages/past-performance/past-performance.component';
 import { PastPerformanceCreateComponent } from './pages/past-performance-create/past-performance-create.component';
@@ -35,9 +33,7 @@ import { AvailablebarComponent } from './components/availablebar/availablebar.co
     AppComponent,
     LoginComponent,
     ProfileComponent,
-    AddProfileComponent,
     AddAccountComponent,
-    AddAccountDetailComponent,
     CorporateProfileComponent,
     PastPerformanceComponent,
     PastPerformanceCreateComponent,
