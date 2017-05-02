@@ -23,14 +23,12 @@ export class AuthService {
 
     // else if already logged in get the current user
     else {
-      this.getUser(localStorage.getItem('userId')).subscribe(
-        (result => {
+      this.getUser(localStorage.getItem('userId')).subscribe(result => {
             this.current_user = result.json()
             console.log(this.current_user)
         },
         err => {
         }
-        )
       )
     }
   }
@@ -43,15 +41,13 @@ export class AuthService {
     }
 
     let opts: RequestOptionsArgs = {}
-    return this.http.post(environment.apiRoot + "/Workers/login", body)
+    return this.http.post(environment.apiRoot + "/users/login", body)
   }
 
   doLogout(redirect = null) {
     localStorage.removeItem('id_token')
     localStorage.removeItem('token_expiration_date')
     localStorage.removeItem('userId')
-    localStorage.removeItem('user_language')
-
   }
 
   isLoggedIn() {
@@ -66,7 +62,7 @@ export class AuthService {
   }
 
   getUser(userId) {
-    return this.authHttp.get(environment.apiRoot + "/Workers/" + userId)
+    return this.authHttp.get(environment.apiRoot + "/users/" + userId)
   }
 }
 

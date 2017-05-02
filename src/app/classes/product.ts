@@ -1,30 +1,34 @@
 export class Product {
     id: string
-    feature: [string]
+    name: string
+    feature: {
+        name: string[],
+        score: number[]
+    }
     description: string
     moreinfolink: string
     viewdemolink: string
     customization: boolean
+    training: boolean
     maintenance: boolean
     customers: {
         defense: [
             {
-                img: string,
+                avatar: string,
                 name: string
             }
         ],
         civilian: [
             {
-                img: string,
+                avatar: string,
                 name: string
             }
         ],
         commercial: [
             {
-                img: string,
+                avatar: string,
                 name: string
             }
         ]
     }
-
 }

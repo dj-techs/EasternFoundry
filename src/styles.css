@@ -17,7 +17,8 @@ body{
 }
 
 p {
-    margin: 0 0 0 10px !important;
+    margin: 0 0 0 0px !important;
+    padding-left: 10px;
 }
 
 .info {

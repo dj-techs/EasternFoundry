@@ -2,6 +2,7 @@ export class Company {
     id: string
     name: string
     email: string
+    avatar: string
     contactnumber: string
     address: string
     lastupdated: string

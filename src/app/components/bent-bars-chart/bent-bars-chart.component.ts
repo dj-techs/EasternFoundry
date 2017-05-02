@@ -11,23 +11,27 @@ export class BentBarsChartComponent implements AfterViewInit {
 @Input() width: number;
 @Input() height: number;
 @Input() divID: string;
-
-    @Input() values: number[];
+@Input() values: number[];
 
   constructor() { }
+  colors: string[] = []
+  colorindex: number = 0
 
   ngAfterViewInit() {
 
-      let fields = [];
-      let spacing = 1/this.values.length;
+      let _this = this;
+
+      let fields = []
+      let spacing = 1/this.values.length
       for( let index = 0; index < this.values.length; index++){
-          fields.push({endAngle: this.values[index]*6.28/100, innerRadius: index*spacing, outerRadius: (index+1)*spacing });
+          fields.push({endAngle: this.values[index]*6.28/100, innerRadius: index*spacing, outerRadius: (index+1)*spacing })
+          let color = Math.floor(this.values[index]/100*155)
+          let str_color = 'rgb(' + color.toString() + ',' + color.toString() + ',' + color.toString() + ')'
+          this.colors.push(str_color);
       }
-      spacing -= .01;
+      spacing -= .01
 
     let radius = Math.min( this.width, this.height ) / 2;
-
-    let color = {'webdev': d3.rgb(0x0f,0x0f,0x0f), 'compro': d3.rgb(0x80,0x80,0x80), 'softdev': d3.rgb(0xa9,0xa9,0xa9), 'sysanal': d3.rgb(0xf0,0xf0,0xf0)};
 
     let arcBody = d3.arc()
         .startAngle(0)
@@ -61,14 +65,14 @@ export class BentBarsChartComponent implements AfterViewInit {
 
     function fieldTransition() {
         let field = d3.select(this).transition();
-        let color = Math.floor(field['_id']*spacing*155);
-        let str_color = 'rgb(' + color.toString() + ',' + color.toString() + ',' + color.toString() + ')';
-
-        console.log(str_color);
 
         field.select('.arc-body')
             .attrTween('d', arcTween(arcBody))
-            .style('fill', str_color);
+            .style('fill', _this.colors[_this.colorindex++] )
+        
+        if(_this.colorindex >= _this.values.length) {
+            _this.colorindex = 0
+        }
     }
 
     function arcTween(arc) {

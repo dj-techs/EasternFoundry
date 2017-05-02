@@ -21,7 +21,7 @@ export class User {
     certificate: [
         {
             degree: string,
-            dataEarned: string
+            dateEarned: string
         }
     ]
     clearance: [
@@ -38,6 +38,7 @@ export class User {
             score: number
         }
     ]
+    skill: [string]
     interest: string
     agencyexperience: [
         {

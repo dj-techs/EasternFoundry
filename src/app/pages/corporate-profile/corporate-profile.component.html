@@ -1,20 +1,20 @@
 <div class="container">
   <div class="basic-info col-xs-12 clear">
     <div class="col-xs-12 srow div-title">
-        <p class="left">{{ companyName }}</p>
+        <p class="left">{{ this.currentAccount.name }}</p>
         <div></div>
     </div>
     <div class="main clear">
-        <img id="company-photo" src="../assets/img/profile/user-prototype-1.png" class="left">
+        <img id="company-photo" src='{{ this.currentAccount.avatar }}' class="left avatar">
         <div class="left">
-            <div class="srow"><img src="../assets/img/glyphicon/email-1.png" class="left"><p class="left">Info@testcompany</p></div>
-            <div class="srow"><img src="../assets/img/glyphicon/phone-2.png" class="left"><p class="left">(202) 725-7483</p></div>
-            <div class="srow"><img src="../assets/img/glyphicon/post-1.png" class="left"><p class="left">Washington DC</p></div>
+            <div class="srow"><img src="../assets/img/glyphicon/email-1.png" class="left"><p class="left">{{ this.currentAccount.email }}</p></div>
+            <div class="srow"><img src="../assets/img/glyphicon/phone-2.png" class="left"><p class="left">{{ this.currentAccount.contactnumber }}</p></div>
+            <div class="srow"><img src="../assets/img/glyphicon/post-1.png" class="left"><p class="left">{{ this.currentAccount.address }}</p></div>
         </div>
         <div class="right">
-            <div class="srow"><p class="left two-p" [style.line-height]="'25px'">Information<br>updated</p><p class="right two-p" [style.text-align]="'right'">Dec, 2016</p></div>
-            <div class="srow"><p class="left two-p" [style.line-height]="'25px'">Information<br>accuracy</p><rating [(ngModel)]="rate" [max]="5" [readonly]="isReadonly" class="right"></rating></div>
-            <div class="srow"><img src="../assets/img/glyphicon/post-1.png" class="left"><p class="left">Service disable vetran owned</p></div>
+            <div class="srow"><p class="left two-p" [style.line-height]="'25px'">Information<br>updated</p><p class="right two-p" [style.text-align]="'right'">{{ this.currentAccount.lastupdated }}</p></div>
+            <div class="srow"><p class="left two-p" [style.line-height]="'25px'">Information<br>accuracy</p><rating [(ngModel)]="this.currentAccount.information_accuracy" [max]="5" [readonly]="isReadonly" class="right"></rating></div>
+            <!--<div class="srow"><img src="../assets/img/glyphicon/post-1.png" class="left"><p class="left">Service disable vetran owned</p></div>-->
         </div>
     </div>    
   </div>
@@ -25,17 +25,11 @@
           <div></div>
       </div>
       <div class="main clear">
-          <div class="halfwidth left">
-              <img src="../assets/img/profile/user-prototype-1.png" class="left" [style.width]="'150px'">
-              <p class="srow">Andrew Chang</p>
-              <p class="srow">CEO</p>
-              <p class="srow">Chang@eastern-foundry.com</p>
-          </div>
-          <div class="halfwidth right">
-              <img src="../assets/img/profile/user-prototype-1.png" class="left" [style.width]="'150px'">
-              <p class="srow">Geoff Orazem</p>
-              <p class="srow">CSO</p>
-              <p class="srow">Geoff@eastern-foundry.com</p>
+          <div class="halfwidth left" *ngFor='let index of users'>
+              <img src='{{ index.avatar }}' class="left avatar" [style.width]="'150px'">
+              <p class="srow">{{ index.firstname + ' ' + index.lastname}}</p>
+              <p class="srow">{{ index.jobtitle }}</p>
+              <p class="srow">{{ index.email }}</p>
           </div>
       </div>    
   </div>
@@ -47,119 +41,111 @@
       </div>
   </div>
 
-  <!--<div class="product col-xs-12 clear">
-      <div class="div-title col-xs-12">
+  <div class="product col-xs-12 clear" *ngFor='let index of products'>
+      <div class="div-title col-xs-12" *ngIf='currentTab'>
           <img src="./assets/img/product.png">
-          <p>PRODUCTS</p>
+          <p>{{ index.name }}</p>
           <div></div>
       </div>
-      <div class="row main">
-          <pie-chart></pie-chart>
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12 text-container" [style.height]="'312px'">
-              <div class="col-xs-12" [style.overflow] = "'auto'" [style.height]="'272px'">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum 
+      <div class="row main" *ngIf='currentTab'>
+          <div style="display: block" class="col-xs-12 col-sm-6">
+            <canvas baseChart          
+                    [data]="index.feature.score"
+                    [labels]="index.feature.name"
+                    [chartType]="'pie'"></canvas>
+          </div>
+          <div class="col-xs-12 col-sm-6 text-container">
+              <div class="col-xs-12" [style.overflow] = "'auto'">
+                 <p *ngFor='let jendex of index.feature.name'>{{jendex}}</p>
               </div>
           </div>
       </div>
-      <div class="row main">
-          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-container" [style.height]="'300px'">
-              <div class="col-xs-12" [style.overflow] = "'auto'" [style.height]="'260px'">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum 
+      <div class="row main" *ngIf='currentTab'>
+          <div class="col-xs-12 text-container">
+              <div class="col-xs-12" [style.overflow] = "'auto'">
+                 {{index.description}}
               </div>
           </div>
       </div>
-      <div class="row main">
-          <button class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-xs-12 left">More Information</button>
-          <button class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-xs-12 right">View Demo</button>
+      <div class="row main" *ngIf='currentTab'>
+          <button class="col-xs-12 col-sm-5">More Information</button>
+          <button class="col-xs-12 col-sm-5 col-sm-offset-2">View Demo</button>
       </div>
-  </div>
-
-  <div class="service col-xs-12 clear">
-      <div class="div-title col-xs-12">
+      <div class="ad-service div-title col-xs-12" *ngIf='currentTab'>
           <img src="./assets/img/service.png">
           <p>ADDITIONAL SERVICES</p>
           <div></div>
       </div>
-      <div class="main srow">
-          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12"><p class="col-xl-11 col-lg-11 col-md-11 col-sm-11 col-xs-11">Provide Trainig?</p><input type="checkbox" class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+      <div class="ad-service main" *ngIf='currentTab'>
+          <div class="col-xs-12 col-sm-4"><p class="col-xs-11">Provide Trainig?</p><input type="checkbox" class="col-xs-1" checked='{{index.training}}'>
           </div>
-          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12"><p class="col-xl-11 col-lg-11 col-md-11 col-sm-11 col-xs-11">Product Customization?</p><input type="checkbox" class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+          <div class="col-xs-12 col-sm-4"><p class="col-xs-11">Product Customization?</p><input type="checkbox" class="col-xs-1" checked='{{index.customization}}'>
           </div>
-          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12"><p class="col-xl-11 col-lg-11 col-md-11 col-sm-11 col-xs-11">Ongoing Maintenance</p><input type="checkbox" class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+          <div class="col-xs-12 col-sm-4"><p class="col-xs-11">Ongoing Maintenance</p><input type="checkbox" class="col-xs-1" checked='{{index.maintenance}}'>
           </div>
       </div>
-  </div>
-
-  <div class="customer col-xs-12 clear">
-      <div class="div-title col-xs-12">
+      <div class="customer div-title col-xs-12" *ngIf='currentTab'>
           <img src="./assets/img/customer.png">
           <p>CUSTOMERS USING THE PRODUCT</p>
           <div></div>
       </div>
-      <div class="main">
-          <div class="row col-xs-12 text-container">
+      <div class="main" *ngIf='currentTab'>
+          <div class="row col-xs-12 text-container text-center">
               <div class="left" [style.width]="'120px'">
                   <p class="col-xs-12">DEFENSE</p>
                   <img src="./assets/img/defense.png" [style.width]="'100px'" [style.margin-left]="'10px'">
               </div>
-              <img src="./assets/img/user.png" [style.width]="'100px'">
-              <img src="./assets/img/user.png" [style.width]="'100px'">
-              <img src="./assets/img/user.png" [style.width]="'100px'">
-              <img src="./assets/img/user.png" [style.width]="'100px'">
-              <img src="./assets/img/user.png" [style.width]="'100px'">
+              <div class="left text-center" *ngFor='let jendex of index.customers.defense' [style.width]="'120px'">                  
+                  <img src="{{jendex.avatar}}" [style.width]="'100px'" [style.margin-left]="'10px'">
+                  <p class="col-xs-12">{{jendex.name}}</p>
+              </div>
           </div>
           <div class="row col-xs-12 text-container">
               <div class="left" [style.width]="'120px'">
                   <p class="col-xs-12">CIVILIAN</p>
                   <img src="./assets/img/civilian.png" [style.width]="'100px'" [style.margin-left]="'10px'">
               </div>
-              <img src="./assets/img/user.png" [style.width]="'100px'">
-              <img src="./assets/img/user.png" [style.width]="'100px'">
-              <img src="./assets/img/user.png" [style.width]="'100px'">
+              <div class="left text-center" *ngFor='let jendex of index.customers.civilian' [style.width]="'120px'">                  
+                  <img src="{{jendex.avatar}}" [style.width]="'100px'" [style.margin-left]="'10px'">
+                  <p class="col-xs-12">{{jendex.name}}</p>
+              </div>
           </div>
           <div class="row col-xs-12 text-container">
               <div class="left" [style.width]="'120px'">
                   <p class="col-xs-12">COMMERCIA</p>
                   <img src="./assets/img/commercia.png" [style.width]="'100px'" [style.margin-left]="'10px'">
               </div>
-              <img src="./assets/img/user.png" [style.width]="'100px'">
-              <img src="./assets/img/user.png" [style.width]="'100px'">
+              <div class="left text-center" *ngFor='let jendex of index.customers.commercial' [style.width]="'120px'">                  
+                  <img src="{{jendex.avatar}}" [style.width]="'100px'" [style.margin-left]="'10px'">
+                  <p class="col-xs-12">{{jendex.name}}</p>
+              </div>
           </div>
       </div>
+  </div>
+
+  <div class="service col-xs-12 clear" *ngFor='let index of services'>
+    <div class="div-title col-md-12" *ngIf='!currentTab'>
+        <img src="./assets/img/profile/capabilities-1.png">
+        <p>{{index.name}}</p>
+        <div></div>
+    </div>
+    <div class="capa-main col-md-12" *ngIf='!currentTab'>
+        <div class="col-xl-12 col-lg-6">
+            <div class="capa-chart col-xs-12">
+                <app-bent-bars-chart width='300' height='300' divID='bbChart{{index.id}}' [values]='getServiceChartValue(index.id)'></app-bent-bars-chart>
+            </div>        
+        </div>
+        <div class="col-xs-12 col-lg-6 text-container">
+            <div class="row">
+                <div class="col-xs-12 col-md-6 left">
+                    <app-color-comment-box *ngFor='let feature of index.feature' color='{{getServiceChartColor(feature.score)}}' text='{{feature.title}}' class="col-xs-12 col-sm-6 col-md-12"></app-color-comment-box>
+                </div>
+                <div class="col-xs-12 col-md-6 right">
+                    <p *ngFor='let skill of index.skills' class="col-xs-12 col-sm-6 col-md-12">{{ skill }} </p>
+                </div>
+            </div>
+        </div>
+    </div>
   </div>
 
   <div class="performance col-xs-12 clear">
@@ -169,27 +155,17 @@
           <div></div>
       </div>
       <div class="main clear">
-          <div class="pp-slide">
-              <img src="./assets/img/temp.png" class="col-xs-12">
-              <p class="col-xs-12">ENERGY APP DEVELOPMENT AND DEPLOYMENT</p>
-              <p class="halfwidth left"><strong>Client</strong><br>Airforce</p>
-              <p class="halfwidth right"><strong>Project</strong><br>App development</p>
-              <button>More Information</button> 
-          </div>
-          <div class="pp-slide">
-              <img src="./assets/img/temp.png" class="col-xs-12">
-              <p class="col-xs-12">ENERGY APP DEVELOPMENT AND DEPLOYMENT</p>
-              <p class="halfwidth left"><strong>Client</strong><br>Airforce</p>
-              <p class="halfwidth right"><strong>Project</strong><br>App development</p>
-              <button>More Information</button> 
-          </div>
-          <div class="pp-slide">
-              <img src="./assets/img/temp.png" class="col-xs-12">
-              <p class="col-xs-12">ENERGY APP DEVELOPMENT AND DEPLOYMENT</p>
-              <p class="halfwidth left"><strong>Client</strong><br>Airforce</p>
-              <p class="halfwidth right"><strong>Project</strong><br>App development</p>
-              <button>More Information</button> 
-          </div>
+        <div class="swiper-container col-xs-12">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide pp-slide" *ngFor="let pp of pastperformances">
+                    <img src="{{pp.avatar}}" class="fullwidth">
+                    <p class="col-xs-12">{{pp.title}}</p>
+                    <p class="halfwidth left"><strong>Client</strong><br>{{pp.client}}</p>
+                    <p class="halfwidth right"><strong>Project</strong><br>{{pp.topic}}</p>
+                    <button>More Information</button> 
+                </div>
+            </div>
+        </div>           
       </div>
   </div>
 
@@ -200,26 +176,9 @@
           <div></div>
       </div>
       <div class="row main">
-          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-container" [style.height]="'300px'">
-              <div class="col-xs-12" [style.overflow] = "'auto'" [style.height]="'260px'">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum 
+          <div class="col-xs-12 text-container" >
+              <div class="col-xs-12" [style.overflow] = "'auto'" [style.max-height]="'250px'">
+                  <h5 *ngFor='let index of CQAC'>{{index}}</h5>
               </div>
           </div>
       </div>
@@ -232,26 +191,9 @@
           <div></div>
       </div>
       <div class="row main">
-          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-container" [style.height]="'300px'">
-              <div class="col-xs-12" [style.overflow] = "'auto'" [style.height]="'260px'">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum 
+          <div class="col-xs-12 text-container">
+              <div class="col-xs-12" [style.overflow] = "'auto'" [style.max-height]="'250px'">
+                   <h5 *ngFor='let index of currentAccount.vehicles'>{{index.type + ': ' + index.quantity}}</h5>
               </div>
           </div>
       </div>
@@ -264,28 +206,11 @@
           <div></div>
       </div>
       <div class="row main">
-          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-container" [style.height]="'300px'">
-              <div class="col-xs-12" [style.overflow] = "'auto'" [style.height]="'260px'">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum 
+          <div class="col-xs-12 text-container">
+              <div class="col-xs-12" [style.overflow] = "'auto'" [style.max-height]="'250px'">
+                 <h5 *ngFor='let index of currentAccount.schedule'>{{index.date + ': ' + index.content}}</h5>
               </div>
           </div>
       </div>
-  </div>-->
+  </div>
 </div>

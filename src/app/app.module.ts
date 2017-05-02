@@ -42,7 +42,7 @@ import { AvailablebarComponent } from './components/availablebar/availablebar.co
     ColorCommentBoxComponent,
     ExpChartComponent,
     CareerComponent,
-    BarchartComponent,
+    BarchartComponent,    
     AvailablebarComponent
   ],
   imports: [

@@ -5,17 +5,17 @@ export class PastPerformance {
     topic: string
     startdate: string
     enddate: string
-    cleard: boolean = false
+    cleard: boolean
     location: string
-    FET: string
+    FTE: string
     value: string
-    rating: number
-    descriptiong: string
+    rating: string
+    description: string
     avatar: string
     employees: [
         {
             title: string,
-            stillwith: false
+            stillwith: boolean
         }
     ]
     synopsis: string
