@@ -50,13 +50,13 @@
       <div class="row main" *ngIf='currentTab'>
           <div style="display: block" class="col-xs-12 col-sm-6">
             <canvas baseChart          
-                    [data]="index.feature.score"
-                    [labels]="index.feature.name"
+                    [data]="getProductChartData(index.id)"
+                    [labels]="getProductChartLabel(index.id)"
                     [chartType]="'pie'"></canvas>
           </div>
           <div class="col-xs-12 col-sm-6 text-container">
               <div class="col-xs-12" [style.overflow] = "'auto'">
-                 <p *ngFor='let jendex of index.feature.name'>{{jendex}}</p>
+                 <p *ngFor='let feature of index.feature'>{{feature.name}}</p>
               </div>
           </div>
       </div>

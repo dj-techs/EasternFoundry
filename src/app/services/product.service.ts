@@ -26,18 +26,24 @@ export class ProductService {
     let temp: Product = new Product()
     temp.id = '1'
     temp.name = 'product 1'
-    temp.feature =  {
-        name: [
-          'feature 1',
-          'feature 2',
-          'feature 3',
-          'feature 4',
-          'feature 5'
-        ],
-        score: [
-          10,20,30,18,60
-        ]
+    temp.feature = [
+      {
+        name: 'feature 1',
+        score: 10
+      },{
+        name: 'feature 2',
+        score: 20
+      },{
+        name: 'feature 3',
+        score: 30
+      },{
+        name: 'feature 4',
+        score: 18
+      },{
+        name: 'feature 5',
+        score: 60
       }
+    ]
     temp.description = 'the quick brown fox jumps over lazy dog the quick brown fox jumps over lazy dog the quick brown fox jumps over lazy dog  the quick brown fox jumps over lazy dog the quick brown fox jumps over lazy dog the quick brown fox jumps over lazy dog the quick brown fox jumps over lazy dog the quick brown fox jumps over lazy dog the quick brown fox jumps over lazy dog the quick brown fox jumps over lazy dog the quick brown fox jumps over lazy dog'
     temp.moreinfolink = ''
     temp.viewdemolink = ''
@@ -85,22 +91,39 @@ export class ProductService {
     if(id == '2') {
       temp.id = '2'
       temp.name = 'product 2'
-      temp.feature = {
-        name: [
-          'feature 1',
-          'feature 2',
-          'feature 3',
-          'feature 4',
-          'feature 5',
-          'feature 6',
-          'feature 7',
-          'feature 8',
-          'feature 9'
-        ],
-        score: [
-          50,100,10,20,30,18,44,60,5
-        ]
-      }
+      temp.feature = [
+        {
+          name: 'feature 1',
+          score: 10
+        },{
+          name: 'feature 2',
+          score: 20
+        },{
+          name: 'feature 3',
+          score: 30
+        },{
+          name: 'feature 4',
+          score: 18
+        },{
+          name: 'feature 5',
+          score: 60
+        },{
+          name: 'feature 6',
+          score: 10
+        },{
+          name: 'feature 7',
+          score: 20
+        },{
+          name: 'feature 8',
+          score: 30
+        },{
+          name: 'feature 9',
+          score: 18
+        },{
+          name: 'feature 10',
+          score: 60
+        }
+      ]
       temp.description = 'Second the quick brown fox jumps over lazy dog the quick brown fox jumps over lazy dog the quick brown fox jumps over lazy dog'
       temp.customers = {
         defense: [

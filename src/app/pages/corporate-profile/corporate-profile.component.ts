@@ -26,11 +26,6 @@ export class CorporateProfileComponent implements OnInit, AfterViewInit {
   products: Product[] = []
   services: Service[] = []
   pastperformances: PastPerformance[] = []
-  productChartData: number[] = []
-  productChartLabels: string[] = []
-  serviceChartColors: string[] = []
-  serviceChartValues: string[] = []
-  serviceChartLabels: string[] = []
   currentPP: number = 0
   CQAC:string[] = []
 
@@ -200,6 +195,30 @@ export class CorporateProfileComponent implements OnInit, AfterViewInit {
     let temp: string
     var color: number = score/100*155
     temp = 'rgb(' + color.toString() + ',' + color.toString() + ',' + color.toString() + ')'
+    return temp
+  }
+
+  getProductChartData(id: string): number[] {
+    let temp: number[] = []
+    for(let i of this.products) {
+      if(i.id == id) {
+        for(let j of i.feature) {
+          temp.push(j.score)
+        }
+      }
+    }
+    return temp
+  }
+
+  getProductChartLabel(id: string): string[] {
+    let temp: string[] = []
+    for(let i of this.products) {
+      if(i.id == id) {
+        for(let j of i.feature) {
+          temp.push(j.name)
+        }
+      }
+    }
     return temp
   }
 

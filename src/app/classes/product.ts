@@ -1,10 +1,12 @@
 export class Product {
     id: string
     name: string
-    feature: {
-        name: string[],
-        score: number[]
-    }
+    feature: [
+        {
+            name: string,
+            score: number
+        }        
+    ]
     description: string
     moreinfolink: string
     viewdemolink: string
