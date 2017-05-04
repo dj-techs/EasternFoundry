@@ -11,6 +11,7 @@ import { User } from '../classes/user'
 export class UserService {
 
   authHttp: AuthHttp
+  current_user: any
 
   constructor(private http:Http) {
     this.authHttp = new AuthHttp(http)
@@ -28,6 +29,7 @@ export class UserService {
     temp.firstname = 'Andrew'
     temp.lastname = 'Chang'
     temp.jobtitle = 'CEO'
+    temp.office = '4s-Silverword Software & Serviecs LLC'
     temp.employer = ''
     temp.email = 'chang@eastern-foundry.com'
     temp.contactNumber = '12345678912'

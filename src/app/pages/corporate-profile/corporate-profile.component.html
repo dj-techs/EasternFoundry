@@ -30,6 +30,7 @@
               <p class="srow">{{ index.firstname + ' ' + index.lastname}}</p>
               <p class="srow">{{ index.jobtitle }}</p>
               <p class="srow">{{ index.email }}</p>
+              <button class="col-xs-8 col-xs-offset-2" (click)="toUserProfile(index.id)">More Information</button>
           </div>
       </div>    
   </div>

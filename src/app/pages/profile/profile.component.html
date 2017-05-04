@@ -2,10 +2,10 @@
     <div class="basic-info col-xs-12">
         <div class="row">
             <div class="col-xs-8 col-xs-offset-2 col-lg-4 col-lg-offset-0">
-                <img id="user-photo" src="../assets/img/profile/user-prototype-1.png" class="left">
+                <img id="user-photo" src="{{user.avatar}}" class="left">
                 <div id="user-photo-job" class="right">
-                    <p id="user-job">Application Architect</p>
-                    <p id="user-office">4s-Silverword Software & Serviecs LLC</p>         
+                    <p id="user-job">{{user.jobtitle}}</p>
+                    <p id="user-office">{{user.office}}</p>         
                 </div>
             </div>            
             <div id="user-contact" class="col-xs-8 col-xs-offset-2 col-lg-4 col-lg-offset-0">

@@ -12,7 +12,7 @@ export const ROUTES: Routes = [
 
   { path: '',      component: CorporateProfileComponent },
   { path: 'login', component: LoginComponent},
-  { path: 'profile',      component: ProfileComponent },
+  { path: 'user-profile/:id',      component: ProfileComponent },
   { path: 'add-account',  component: AddAccountComponent },
   { path: 'corporate-profile', component: CorporateProfileComponent },
   { path: 'past-performance', component: PastPerformanceComponent},

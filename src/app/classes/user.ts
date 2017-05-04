@@ -3,6 +3,7 @@ export class User {
     firstname: string
     lastname: string
     jobtitle: string
+    office: string
     employer: string
     email: string
     contactNumber: string

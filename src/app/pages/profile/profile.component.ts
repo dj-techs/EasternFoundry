@@ -1,9 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+
+
+import { User } from '../../classes/user'
+import { UserService } from '../../services/user.service'
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
+  providers: [UserService],
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
@@ -193,10 +199,21 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  constructor() { }
+  id: string
+  user: User
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private location: Location,
+    private userService: UserService
+  ) { 
+    this.getData()
+    this.user = this.userService.getUserbyID(this.id)
+  }
 
   ngOnInit() {
-    this.getData();
+    this.id = this.route.snapshot.params['id'];    
   }
 
 }

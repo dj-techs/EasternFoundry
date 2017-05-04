@@ -5,6 +5,9 @@ import { PastPerformance } from '../../classes/past-performance'
 import { Company } from '../../classes/company'
 import { Service } from '../../classes/service'
 
+import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
 import { UserService } from '../../services/user.service'
 import { ProductService } from '../../services/product.service'
 import { ServiceService } from '../../services/service.service'
@@ -32,6 +35,9 @@ export class CorporateProfileComponent implements OnInit, AfterViewInit {
   currentTab: boolean = true
 
   constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private location: Location,
     private userService: UserService,
     private productService: ProductService,
     private serviceService: ServiceService,
@@ -220,6 +226,10 @@ export class CorporateProfileComponent implements OnInit, AfterViewInit {
       }
     }
     return temp
+  }
+
+  toUserProfile(id: string) {
+    this.router.navigate(['user-profile',id]);
   }
 
 }
