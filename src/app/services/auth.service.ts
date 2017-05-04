@@ -1,6 +1,7 @@
 import { Inject ,Injectable } from '@angular/core'
 import { Http, Response, RequestOptionsArgs, Headers } from '@angular/http'
 import { Router, ActivatedRoute, Params } from '@angular/router'
+import { Location } from '@angular/common';
 import { Observable } from 'rxjs/Observable'
 
 import 'rxjs/add/operator/map'
