@@ -2,25 +2,25 @@
     <div class="basic-info col-xs-12">
         <div class="row">
             <div class="col-xs-8 col-xs-offset-2 col-lg-4 col-lg-offset-0">
-                <img id="user-photo" src="{{user.avatar}}" class="left">
+                <img id="user-photo" src="{{ currentUser.avatar }}" class="left">
                 <div id="user-photo-job" class="right">
-                    <p id="user-job">{{user.jobtitle}}</p>
-                    <p id="user-office">{{user.office}}</p>         
+                    <p id="user-job">{{ currentUser.jobtitle }}</p>
+                    <p id="user-office">{{ currentUser.office}}</p>         
                 </div>
             </div>            
             <div id="user-contact" class="col-xs-8 col-xs-offset-2 col-lg-4 col-lg-offset-0">
-                <div><img src="../assets/img/glyphicon/email-1.png" class="left"><p id="user-email" class="left">Contact Company leadership</p></div>
-                <div><img src="../assets/img/glyphicon/phone-2.png" class="left"><p id="user-phone" class="left">Contact Company leadership</p></div>
-                <div><img src="../assets/img/glyphicon/post-1.png" class="left"><p id="user-post" class="left">Washington DC</p></div>
+                <div><img src="../assets/img/glyphicon/email-1.png" class="left"><p id="user-email" class="left">{{ currentUser.email }}</p></div>
+                <div><img src="../assets/img/glyphicon/phone-2.png" class="left"><p id="user-phone" class="left">{{ currentUser.contactNumber }}</p></div>
+                <div><img src="../assets/img/glyphicon/post-1.png" class="left"><p id="user-post" class="left">{{ currentUser.city }}</p></div>
             </div>
             <div id="user-info" class="col-xs-8 col-xs-offset-2 col-lg-4 col-lg-offset-0">
                 <div id="user-info-date">
                     <p class="left">Information<br>Updated</p>
-                    <p id="user-info-updated-date" class="right">Dec 2016</p>
+                    <p id="user-info-updated-date" class="right">{{ currentUser.lastupdated}}</p>
                 </div>
                 <div id="user-info-accuracy">
                     <p class="left">Information Accuracy</p>
-                    <rating [(ngModel)]="rate" [max]="5" [readonly]="isReadonly" class="right"></rating>
+                    <rating [(ngModel)]="currentUser.information_accuracy" [max]="5" [readonly]="isReadonly" class="right"></rating>
                 </div>
             </div>
         </div>
@@ -30,15 +30,18 @@
     <div class="col-xs-12 col-md-6 text-center">
         <p class="title font28">CERTIFICATIONS, DEGREES</p>
         <p class="subtitle font28">AWARDS & CLEARANCES</p>
-        <div id="account-certification" class="text-container text-left">            
-            <p>{{ certificationText }}</p>
+        <div class="text-container text-left" [style.height] = "'300px'">            
+            <p *ngFor="let cert of currentUser.certificate">{{ 'Degree: ' + cert.degree + ',  Earned: ' + cert.dateEarned }}</p>
+            <p *ngFor="let deg of currentUser.degree">{{ 'Type: ' + deg.type + ', Concentration: ' + deg.concentration + ', From: ' + deg.school + ', Graduation: ' + deg.graduationDate }}</p>
+            <p *ngFor="let index of currentUser.clearance">{{ 'Type: ' + index.type + ', Awarded: ' + index.awarded + ', Expiraion: ' + index.expiration }}</p>
+            <p *ngFor="let index of currentUser.award">{{ 'Awarded: ' + index }}</p>
         </div>        
     </div>
     <div class="col-xs-12 col-md-6 text-center">
         <p class="title font28">INTERESTS</p>
         <p class="subtitle font28">INTERESTED IN</p>
-        <div id="account-interest" class="text-container text-left">            
-            <p >{{ interestedText }}</p>
+        <div class="text-container text-left" [style.height] = "'300px'">
+            <p >{{ currentUser.interest }}</p>
         </div>        
     </div>
 </div>
@@ -47,52 +50,48 @@
     <div class="div-title col-xs-12">
         <img src="./assets/img/profile/capabilities-1.png">
         <p>CAPABILITIES</p>
-        <div class="md-8"></div>
+        <div ></div>
     </div>
     <div class="capa-main col-xs-12">
-        <div class="col-xl-12 col-lg-6">
-            <div class="row">
-                <div class="capa-pre col-xs-12 col-sm-6 col-lg-4 left">
-                    <p>Computer<br> and <br>Mathematical</p>
-                </div>
-                <div class="capa-chart col-xs-12 col-sm-6 col-lg-8 right">
-                    <app-bent-bars-chart id='main' width='300' height='300' divID='capability-chart' [values]='capaValues'></app-bent-bars-chart>
-                </div>
-            </div>            
+        <div class="col-xl-12 col-sm-6">
+            <div class="capa-chart col-xs-12">
+                <app-bent-bars-chart width='300' height='300' divID='bbChart{{currentUser.id}}' [values]='getCapaChartValues()'></app-bent-bars-chart>
+            </div>        
         </div>
-        <div class="col-xs-12 col-lg-6 text-container">
+        <div class="col-xs-12 col-sm-6 text-container">
             <div class="row">
                 <div class="col-xs-12 col-md-6 left">
-                    <app-color-comment-box *ngFor='let index of capaData' color='{{capaColors[index.capability]}}' text='{{index.capability}}' class="col-xs-12 col-sm-6 col-md-12"></app-color-comment-box>
+                    <app-color-comment-box *ngFor='let feature of currentUser.capability' color='{{getCapaChartColor(feature.score)}}' text='{{feature.name}}' class="col-xs-12 col-md-6"></app-color-comment-box>
                 </div>
                 <div class="col-xs-12 col-md-6 right">
-                    <p *ngFor='let skill of capaSkills' class="col-xs-12 col-sm-6 col-md-12">{{ skill }} </p>
+                    <p *ngFor='let skill of currentUser.skill' class="col-xs-12 col-md-6">{{ skill }} </p>
                 </div>
             </div>
-        </div>        
+        </div>
     </div>
-</div>
-
-<div class="experience col-xs-12 clear">
+  </div>
+  <div class="experience col-xs-12 clear">
     <div class="div-title col-xs-12">
         <img src="./assets/img/profile/agency-3.png">
         <p>AGENCY EXPERIENCE</p>
-        <div class="md-8"></div>
+        <div ></div>
     </div>
+    
     <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 text-container">
-        <app-color-comment-box *ngFor='let index of expTitles' color='{{ expColors[index] }}' text='{{index}}' class="col-xs-12 col-sm-6 col-md-12"></app-color-comment-box>
+        <app-color-comment-box *ngFor='let index of currentUser.agencyexperience.main.data' color='{{ expColors[index.title] }}' text='{{index.title}}' class="col-xs-12 col-sm-6 col-md-12"></app-color-comment-box>
     </div>
+    
     <div class="exp-main col-xs-12">
         <div class="app-exp-chart left">
-            <p id="exp-main-title">Airforce</p>
-            <app-exp-chart width='500' height='500' divID='exp-main-chart' [values]='expMainValues'></app-exp-chart>
+            <p id="exp-main-title">{{currentUser.agencyexperience.main.title}}</p>
+            <app-exp-chart width='500' height='500' divID='exp-main-chart' [values]='expMainValues()'></app-exp-chart>
         </div>
         <div class="app-exp-chart right">
-            <app-exp-chart id='sub1' width='250' height='250' divID='exp-sub1-chart' [values]='expSub1Values' class="right"></app-exp-chart>
+            <app-exp-chart id='sub1' width='250' height='250' divID='exp-sub1-chart' [values]='expSub1Values()' class="right"></app-exp-chart>
             <p id="exp-sub1-title" class="left">Office 1</p>
         </div>
         <div class="app-exp-chart left">
-            <app-exp-chart id='sub2' width='250' height='250' divID='exp-sub2-chart' [values]='expSub2Values' class="left"></app-exp-chart>
+            <app-exp-chart id='sub2' width='250' height='250' divID='exp-sub2-chart' [values]='expSub2Values()' class="left"></app-exp-chart>
             <p id="exp-sub2-title" class="right">Office 2</p>
         </div>
     </div>
@@ -102,31 +101,40 @@
     <div class="div-title col-xs-12">
         <img src="./assets/img/profile/career.png">
         <p>CAREER</p>
-        <div class="md-8"></div>
+        <div ></div>
     </div>
-    <career [Data]="careerData" [current]="careerCurrent"></career>
+    <career [Data]="currentUser.career" [current]="currentYear()"></career>
 </div>
 
 <div class="strength col-xs-12 clear">
     <div class="div-title col-xs-12">
         <img src="./assets/img/profile/strength.png">
         <p>STRENGTH</p>
-        <div class="md-8"></div>
+        <div ></div>
     </div>
-    <app-barchart></app-barchart>
+    <canvas baseChart
+            [datasets]="strengthChartDatas"
+            [labels]="strengthChartLabels"
+            [options]="{ scaleShowVerticalLines: true, responsive: true, scales: { yAxes: [{ticks: {beginAtZero: true }}]} }"
+            [legend]="true"
+            [chartType]="'bar'"></canvas>
+
 </div>
 
 <div class="availability col-xs-12 clear">
     <div class="div-title col-xs-12">
         <img src="./assets/img/profile/availability.png">
         <p>AVAILABILITY</p>
-        <div class="md-8"></div>
+        <div ></div>
     </div>
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 text-container">
         <app-color-comment-box color='#7f7f7f' text='unavilable' class="col-xs-12 col-sm-6 col-md-6"></app-color-comment-box>
         <app-color-comment-box color='#0b6ec1' text='available' class="col-xs-12 col-sm-6 col-md-6"></app-color-comment-box>
     </div>
-     <app-availablebar></app-availablebar>
+     <app-availablebar [values] = 'availabilityData.values' [dates] = 'availabilityData.dates'></app-availablebar>
+</div>
 </div>
 
-</div>
+
+
+

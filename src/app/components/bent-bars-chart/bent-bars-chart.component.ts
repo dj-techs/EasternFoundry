@@ -24,7 +24,7 @@ export class BentBarsChartComponent implements AfterViewInit {
       let fields = []
       let spacing = 1/this.values.length
       for( let index = 0; index < this.values.length; index++){
-          fields.push({endAngle: this.values[index]*6.28/100, innerRadius: index*spacing, outerRadius: (index+1)*spacing })
+          fields.push({endAngle: this.values[index]*6.28/100, innerRadius: index*spacing+0.1, outerRadius: (index+1)*spacing })
           let color = Math.floor(this.values[index]/100*155)
           let str_color = 'rgb(' + color.toString() + ',' + color.toString() + ',' + color.toString() + ')'
           this.colors.push(str_color);

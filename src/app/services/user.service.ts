@@ -37,6 +37,8 @@ export class UserService {
     temp.state = 'US'
     temp.zip = '20001'
     temp.avatar = '../../assets/img/user-account1.png'
+    temp.lastupdated = 'Dec, 2016'
+    temp.information_accuracy = 4.5
     temp.degree = [
       {
         type: 'master',
@@ -88,24 +90,59 @@ export class UserService {
     ]
     temp.skill = ['Javascript', 'HTML', 'ES6', 'Human Resource Manage']
     temp.interest = 'Lorem the quick brown fox jumps over lazy dog Lorem the quick brown fox jumps over lazy dog Lorem the quick brown fox jumps over lazy dog Lorem the quick brown fox jumps over lazy dog Lorem the quick brown fox jumps over lazy dog'
-    temp.agencyexperience = [
-      {
-        title: 'Years Agency experience',
-        score: 90
-      },
-      {
-        title: '$ (M) of agency revenue',
-        score: 48
-      },
-      {
-        title: 'Proposals written',
-        score: 100
-      },
-      {
-        title: 'Relationships',
-        score: 30
-      }
-    ]
+    temp.agencyexperience = {
+      main: {
+        title: 'Air force',
+        data: [
+        {
+          title: 'Years Agency experience',
+          score: 90
+        },{
+          title: '$ (M) of agency revenue',
+          score: 48
+        },{
+          title: 'Proposals written',
+          score: 100
+        },{
+          title: 'Relationships',
+          score: 30
+        }
+      ]},
+      office1: {
+        title: 'office1',
+        data:[
+        {
+          title: 'Years Agency experience',
+          score: 90
+        },{
+          title: '$ (M) of agency revenue',
+          score: 48
+        },{
+          title: 'Proposals written',
+          score: 100
+        },{
+          title: 'Relationships',
+          score: 30
+        }
+      ]},
+      office2: {
+        title: 'office2',
+        data: [
+        {
+          title: 'Years Agency experience',
+          score: 90
+        },{
+          title: '$ (M) of agency revenue',
+          score: 48
+        },{
+          title: 'Proposals written',
+          score: 100
+        },{
+          title: 'Relationships',
+          score: 30
+        }
+      ]}
+    }
     temp.career = [
       {
         'year': 2015,

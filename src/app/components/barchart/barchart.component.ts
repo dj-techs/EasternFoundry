@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-barchart',
@@ -12,7 +12,7 @@ export class BarchartComponent implements OnInit {
     responsive: true
   };
 
-  public barChartLabels: string[] = [
+@Input() public barChartLabels: string[] = [
     'Deductive Reasoning',
     'Oral Expression',
     'Written Comprehension',
@@ -28,7 +28,7 @@ export class BarchartComponent implements OnInit {
   public barChartType: string = 'bar';
   public barChartLegend: boolean = true;
 
-  public barChartData: any[] = [
+@Input()  public barChartData: any[] = [
     {data: [100, 30, 20, 20, 20, 18, 17, 5, 8, 6, 8], label: 'Strength'}
   ];
 
@@ -42,7 +42,7 @@ export class BarchartComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    console.log(this.barChartLabels)
   }
 
 }

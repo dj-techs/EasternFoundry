@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-availablebar',
@@ -7,32 +7,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AvailablebarComponent implements OnInit {
 
-  public max: number = 7;
-  public values: string[] = [
-      'unavailable',
-      'available',
-      'unavailable',
-      'unavailable',
-      'available',
-      'available',
-      'available',
-      'available'
-  ];
+  @Input() values: string[] = []
+  @Input() dates: string[] = []
 
-  public dates: string[] = [
-      "Feb '17",
-      "Apr '17",
-      "Jul '17",
-      "Oct '17",
-      "Jan '8",
-      "Apr '17",
-      "Jul '18",
-      "Oct '18"
-  ];
+  ruler: string[] =[]
 
-  constructor() { }
+  constructor() { 
+    
+  }
 
   ngOnInit() {
+    let temp: boolean = true
+    this.ruler.push('./assets/img/profile/ruler-start.png')
+    for( let index of this.values) {
+      if(temp) {
+        this.ruler.push('./assets/img/profile/ruler-one.png')
+      } else {
+        this.ruler.push('./assets/img/profile/ruler-two.png')
+      }
+      temp = !temp
+    }
+    this.ruler.pop()
   }
 
 }

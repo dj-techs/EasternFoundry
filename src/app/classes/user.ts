@@ -2,6 +2,7 @@ export class User {
     id: string
     firstname: string
     lastname: string
+    avatar: string
     jobtitle: string
     office: string
     employer: string
@@ -10,7 +11,8 @@ export class User {
     city: string
     state: string
     zip: string
-    avatar: string
+    lastupdated: string
+    information_accuracy: number
     degree: [
         {
             type: string,
@@ -41,12 +43,20 @@ export class User {
     ]
     skill: [string]
     interest: string
-    agencyexperience: [
-        {
-            title: string
-            score: number
+    agencyexperience: {
+        main: {
+            title: string,
+            data: any[]
+        },
+        office1: {
+            title: string,
+            data: any[]
+        },
+        office2: {
+            title:string,
+            data: any[]
         }
-    ]
+    }
     career: [
         {
             year: number,

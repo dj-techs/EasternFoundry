@@ -15,8 +15,11 @@
 }
 
 img {
-    width: 560px;
+    width: 70px;
     height: 60px;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
 }
 
 p {

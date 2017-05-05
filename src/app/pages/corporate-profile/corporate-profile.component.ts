@@ -200,6 +200,7 @@ export class CorporateProfileComponent implements OnInit, AfterViewInit {
   getServiceChartColor(score: number): string {
     let temp: string
     var color: number = score/100*155
+    color = Math.floor(color)
     temp = 'rgb(' + color.toString() + ',' + color.toString() + ',' + color.toString() + ')'
     return temp
   }

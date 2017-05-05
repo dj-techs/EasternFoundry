@@ -2,9 +2,11 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
-
 import { User } from '../../classes/user'
+
 import { UserService } from '../../services/user.service'
+
+declare var $: any;
 
 @Component({
   selector: 'app-profile',
@@ -14,206 +16,91 @@ import { UserService } from '../../services/user.service'
 })
 export class ProfileComponent implements OnInit {
 
-  public certificationText: string = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-
-  public interestedText: string = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-
-  public capaData = [
-    {
-      percent: 100,
-      capability: 'System Analyst'
-    },
-    {
-      percent: 50,
-      capability: 'Computer Programmer'
-    },
-    {
-      percent: 80,
-      capability: 'Software Developer'
-    },
-    {
-      percent: 60,
-      capability: 'Web Developer'
-    },
-  ];
-
-  public capaColors: string[] = [];
-  public capaValues: number[] = [];
-  public capaSkills: string[] = [
-    'Javascript',
-    'HTML/DHTML',
-    'AJAX/XHR',
-    'RegExp',
-    'ASP',
-    'JSP',
-    'Java',
-    'C#',
-    'VB',
-    '.NET SDK',
-    'WindowsScript',
-    'SQL',
-    'TSQL',
-    'XML',
-    'Server',
-    'Oracle 7x'
-  ];  
-
-  public careerData: any[] = [
-    {
-      'year': 2015,
-      'detail':
-        {
-            'title': 'INDEPENDENT CONTRACTOR',
-            'from': '2013-Present',
-            'company': 'Independent',
-            'career': 'Adding functionality to existing applications including adding new data columns to the atabase, building/rebuilding Com + Middleware components and TSQL Stored Procedure updates. Modify user interface components to accept new and changing data elements Dbugging problems that arise in production applications, such as browser compatibility issues and javascript errors.'
-        }
-    },
-    {
-      'year': 2013,
-      'detail':
-        {
-            'title': 'INDEPENDENT CONTRACTOR',
-            'from': '2013-Present',
-            'company': 'QUALITY ASSURANCE',
-            'career': 'Adding functionality to existing applications including adding new data columns to the atabase, building/rebuilding Com + Middleware components and TSQL Stored Procedure updates. Modify user interface components to accept new and changing data elements Dbugging problems that arise in production applications, such as browser compatibility issues and javascript errors.'
-        }
-    },
-    {
-      'year': 2008,
-      'detail':
-        {
-            'title': 'JR AUTOMATION ANALYST',
-            'from': '2013-Present',
-            'company': '4stay Housing',
-            'career': 'Adding functionality to existing applications including adding new data columns to the atabase, building/rebuilding Com + Middleware components and TSQL Stored Procedure updates. Modify user interface components to accept new and changing data elements Dbugging problems that arise in production applications, such as browser compatibility issues and javascript errors.'
-        }
-    }
-  ];  
-
-  public expColors: string[] = [];
-
-  public expTitles: string[] = [
-    'Years government service',
-    'Years as contractor',
-    'Proposals written',
-    'Relationships'
-  ];
-        
-  public expMainValues: number[] = [10, 30, 80, 90];
-  public expSub1Values: number[] = [10, 30, 50, 60];
-  public expSub2Values: number[] = [10, 30, 80, 70];
-
-  public careerCurrent: number = 2017;
-
-  public temp1: number = 1;
-  public temp2: any[] = [
-    {
-      color: '#111',
-      title: '111'
-    },
-    {
-      color: '#222',
-      title: '222'
-    },
-    {
-      color: '#333',
-      title: '333'
-    },
-    {
-      color: '#444',
-      title: '444'
-    },
-    {
-      color: '#555',
-      title: '555'
-    },
-    {
-      color: '#666',
-      title: '666'
-    },
-    {
-      color: '#777',
-      title: '777'
-    }];
-  public temp3: number = 2;
-  public temp4: any[] = [
-    {
-      color: '#111',
-      title: '111'
-    },
-    {
-      color: '#222',
-      title: '222'
-    },
-    {
-      color: '#333',
-      title: '333'
-    },
-    {
-      color: '#444',
-      title: '444'
-    },
-    {
-      color: '#555',
-      title: '555'
-    },
-    {
-      color: '#666',
-      title: '666'
-    },
-    {
-      color: '#777',
-      title: '777'
-    }];
-
-  
-
-  public max: number = 5;
-  public rate: number = 4;
-  public isReadonly: boolean = false;
-
-  public overStar: number;
-  public percent: number;
-
-  public hoveringOver(value: number): void {
-    this.overStar = value;
-    this.percent = 100 * (value / this.max);
-  };
-
-  public resetStar(): void {
-    this.overStar = void 0;
+  currentUser: User = new User()
+  expColors: string[] = ['rgb(0,178,255)', 'rgb(23,185,255)', 'rgb(46,192,255)', 'rgb(69,199,255)', 'rgb(92,206,255)', 'rgb(115,213,255)'];
+  strengthChartDatas: any[] = []
+  strengthChartLabels: string[] = []
+  availabilityData: any = {
+    values: [],
+    dates: []
   }
 
-  public getData() {
-    for (let index: number = 0 ; index < this.capaData.length ; index++ ) {
-      let color = this.capaData[index].percent/100*155;
-      this.capaColors[this.capaData[index].capability] = 'rgb(' + color.toString() + ',' + color.toString() + ',' + color.toString() + ')';
-      this.capaValues[index] = this.capaData[index].percent;
-    }
-
-    for (let index: number = 0 ; index < this.expTitles.length ; index++ ) {
-      let color = index/this.expTitles.length*155;
-      this.expColors[this.expTitles[index]] = 'rgb(' + color.toString() + ',' + color.toString() + ',' + color.toString() + ')';
-    }
-
-  }
-
-  id: string
-  user: User
 
   constructor(
+    private userService: UserService,
     private route: ActivatedRoute,
     private router: Router,
-    private location: Location,
-    private userService: UserService
-  ) { 
-    this.getData()
-    this.user = this.userService.getUserbyID(this.id)
+    private location: Location  
+  ) {
+    this.currentUser.id = this.route.snapshot.params['id'];
+    this.currentUser = this.userService.getUserbyID(this.currentUser.id)
+    let index: number = 0
+    this.availabilityData.values = []
+    this.availabilityData.dates = []
+    for (let exp of this.currentUser.agencyexperience.main.data) {
+      let color = index/this.currentUser.agencyexperience.main.data.length*155
+      color = Math.floor(color)
+      this.expColors[exp.title] = this.expColors[index++]
+    }
+    let temp: number[] = []
+    for(let index of this.currentUser.strength) {
+      this.strengthChartLabels.push(index.skill)
+      temp.push(index.score)
+    }    
+    for(let index of this.currentUser.availability) {
+      this.availabilityData.dates.push(index.date)
+      this.availabilityData.values.push(index.available)
+    }
+    this.strengthChartDatas.push({data: temp, label: 'Strength'})
   }
+
+
 
   ngOnInit() {
-    this.id = this.route.snapshot.params['id'];    
   }
 
+  getCapaChartValues(): number[] {
+    let temp: number[] = []
+    for (let index of this.currentUser.capability) {
+      temp.push(index.score)
+    }
+    return temp
+  }
+
+  getCapaChartColor(score: number): string {
+    let temp: string
+    var color: number = score/100*155
+    color = Math.floor(color)
+    temp = 'rgb(' + color.toString() + ',' + color.toString() + ',' + color.toString() + ')'
+    return temp
+  }
+
+  expMainValues(): number[] {
+    let temp: number[] = []
+    for( let exp of this.currentUser.agencyexperience.main.data) {
+      temp.push(exp.score)
+    }
+    return temp
+  }
+
+  expSub1Values(): number[] {
+    let temp: number[] = []
+    for( let exp of this.currentUser.agencyexperience.office1.data) {
+      temp.push(exp.score)
+    }
+    return temp
+  }
+
+  expSub2Values(): number[] {
+    let temp: number[] = []
+    for( let exp of this.currentUser.agencyexperience.office2.data) {
+      temp.push(exp.score)
+    }
+    return temp
+  }
+
+  currentYear() {
+    let year = new Date().getFullYear()
+    return year
+  }
 }
