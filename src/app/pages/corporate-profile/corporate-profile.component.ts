@@ -19,7 +19,7 @@ declare var Swiper: any;
 
 @Component({
   selector: 'app-corporate-profile',
-  providers: [UserService, ProductService, ServiceService, PastperformanceService],
+  providers: [UserService, ProductService, ServiceService, PastperformanceService, CompanyServiceˀ],
   templateUrl: './corporate-profile.component.html',
   styleUrls: ['./corporate-profile.component.css']
 })
