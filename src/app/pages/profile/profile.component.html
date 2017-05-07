@@ -28,8 +28,8 @@
 
 <div class="certification col-xs-12">
     <div class="col-xs-12 col-md-6 text-center">
-        <p class="title font28">CERTIFICATIONS, DEGREES</p>
-        <p class="subtitle font28">AWARDS & CLEARANCES</p>
+        <p class="fs-28 fc-title">CERTIFICATIONS, DEGREES</p>
+        <p class="fs-28 fc-subtitle">AWARDS & CLEARANCES</p>
         <div class="text-container text-left" [style.height] = "'300px'">            
             <p *ngFor="let cert of currentUser.certificate">{{ 'Degree: ' + cert.degree + ',  Earned: ' + cert.dateEarned }}</p>
             <p *ngFor="let deg of currentUser.degree">{{ 'Type: ' + deg.type + ', Concentration: ' + deg.concentration + ', From: ' + deg.school + ', Graduation: ' + deg.graduationDate }}</p>
@@ -38,8 +38,8 @@
         </div>        
     </div>
     <div class="col-xs-12 col-md-6 text-center">
-        <p class="title font28">INTERESTS</p>
-        <p class="subtitle font28">INTERESTED IN</p>
+        <p class="fs-28 fc-title">INTERESTS</p>
+        <p class="fs-28 fc-subtitle">INTERESTED IN</p>
         <div class="text-container text-left" [style.height] = "'300px'">
             <p >{{ currentUser.interest }}</p>
         </div>        
