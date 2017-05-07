@@ -17,7 +17,7 @@ declare var $: any;
 export class ProfileComponent implements OnInit {
 
   currentUser: User = new User()
-  expColors: string[] = ['rgb(0,178,255)', 'rgb(23,185,255)', 'rgb(46,192,255)', 'rgb(69,199,255)', 'rgb(92,206,255)', 'rgb(115,213,255)'];
+  expColors: string[] = ['rgb(0,178,255)', 'rgb(69,199,255)', 'rgb(138,220,255)', 'rgb(198,241,255)' ];
   strengthChartDatas: any[] = []
   strengthChartLabels: string[] = []
   availabilityData: any = {
@@ -102,5 +102,9 @@ export class ProfileComponent implements OnInit {
   currentYear() {
     let year = new Date().getFullYear()
     return year
+  }
+
+  back() {
+    this.location.back()
   }
 }

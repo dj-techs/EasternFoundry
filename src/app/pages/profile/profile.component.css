@@ -5,24 +5,11 @@
     margin-bottom: 50px;
 }
 
-
-#user-photo {
+.avatar {
     width: 150px;
     height: 150px;
     border-radius: 10px;
     border: 2px solid #757575;
-}
-
-#user-photo-job {
-    width: calc(100% - 160px);
-}
-
-#user-photo-job p {    
-    height: 60px;
-    margin-top: 15px;
-    margin-left: 10px;
-    line-height: 30px;
-    text-align: left;
 }
 
 #user-job {

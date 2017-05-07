@@ -1,26 +1,27 @@
 <div class="container">
+    <div class="btn-back" (click) = 'this.location.back()'></div>
     <div class="basic-info col-xs-12">
         <div class="row">
-            <div class="col-xs-8 col-xs-offset-2 col-lg-4 col-lg-offset-0">
-                <img id="user-photo" src="{{ currentUser.avatar }}" class="left">
-                <div id="user-photo-job" class="right">
-                    <p id="user-job">{{ currentUser.jobtitle }}</p>
-                    <p id="user-office">{{ currentUser.office}}</p>         
+            <div class="col-xs-8 col-xs-offset-2 col-lg-4 col-lg-offset-0" [style.height] = "'150px'">
+                <img class="avatar left" src="{{ currentUser.avatar }}" >
+                <div class="right" [style.width] = "'calc(100% - 150px)'">
+                    <p class="col-xs-12 mt15" [style.height] = "'60px'">{{ currentUser.jobtitle }}</p>
+                    <p class="col-xs-12 mb15" [style.height] = "'60px'">{{ currentUser.office}}</p>         
                 </div>
             </div>            
             <div id="user-contact" class="col-xs-8 col-xs-offset-2 col-lg-4 col-lg-offset-0">
-                <div><img src="../assets/img/glyphicon/email-1.png" class="left"><p id="user-email" class="left">{{ currentUser.email }}</p></div>
-                <div><img src="../assets/img/glyphicon/phone-2.png" class="left"><p id="user-phone" class="left">{{ currentUser.contactNumber }}</p></div>
-                <div><img src="../assets/img/glyphicon/post-1.png" class="left"><p id="user-post" class="left">{{ currentUser.city }}</p></div>
+                <div><img src="../assets/img/glyphicon/email-1.png" class="left"><p class="left">{{ currentUser.email }}</p></div>
+                <div><img src="../assets/img/glyphicon/phone-2.png" class="left"><p class="left">{{ currentUser.contactNumber }}</p></div>
+                <div><img src="../assets/img/glyphicon/post-1.png" class="left"><p class="left">{{ currentUser.city }}</p></div>
             </div>
             <div id="user-info" class="col-xs-8 col-xs-offset-2 col-lg-4 col-lg-offset-0">
-                <div id="user-info-date">
-                    <p class="left">Information<br>Updated</p>
-                    <p id="user-info-updated-date" class="right">{{ currentUser.lastupdated}}</p>
+                <div class="col-xs-12 col-md-6">
+                    <p class="lh-30 left">Information<br>Updated</p>
+                    <p class="lh-60 right">{{ currentUser.lastupdated}}</p>
                 </div>
-                <div id="user-info-accuracy">
-                    <p class="left">Information Accuracy</p>
-                    <rating [(ngModel)]="currentUser.information_accuracy" [max]="5" class="right"></rating>
+                <div class="col-xs-12 col-md-6">
+                    <p class="lh-60 left">Information Accuracy</p>
+                    <rating [(ngModel)]="currentUser.information_accuracy" [max]="5" class="lh-60 right"></rating>
                 </div>
             </div>
         </div>
@@ -60,11 +61,11 @@
         </div>
         <div class="col-xs-12 col-sm-6 text-container">
             <div class="row">
-                <div class="col-xs-12 left">
-                    <app-color-comment-box *ngFor='let feature of currentUser.capability' color='{{getCapaChartColor(feature.score)}}' text='{{feature.name}}' class="col-xs-12 col-md-6"></app-color-comment-box>
+                <div class="col-xs-12 col-md-6">
+                    <app-color-comment-box *ngFor='let feature of currentUser.capability' color='{{getCapaChartColor(feature.score)}}' text='{{feature.name}}' class="col-xs-12"></app-color-comment-box>
                 </div>
-                <div class="col-xs-12 col-md-6 right">
-                    <p *ngFor='let skill of currentUser.skill' class="col-xs-12 col-md-6">{{ skill }} </p>
+                <div class="col-xs-12 col-md-6">
+                    <p *ngFor='let skill of currentUser.skill' ˀ>{{ skill }} </p>
                 </div>
             </div>
         </div>

@@ -66,14 +66,13 @@ export class ExpChartComponent implements AfterViewInit {
 
     function fieldTransition() {
         let field = d3.select(this).transition();
-
-        let color: string[] = ['rgb(0,178,255)', 'rgb(23,185,255)', 'rgb(46,192,255)', 'rgb(69,199,255)', 'rgb(92,206,255)', 'rgb(115,213,255)'];
+        let color: string[] = ['rgb(0,178,255)', 'rgb(69,199,255)', 'rgb(138,220,255)', 'rgb(198,241,255)' ];
 
         field.select('.arc-body')
             .attrTween('d', arcTween(arcBody))
             .style('stroke-width', 2)
             .style('stroke', 'white')
-            .style('fill', color[field['_id']%6]);
+            .style('fill', color[field['_id']%4]);
     }
 
     function arcTween(arc) {

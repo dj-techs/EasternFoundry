@@ -53,6 +53,10 @@ body{
     margin-right: 10px;
 }
 
+.vcenter {
+    transform: translateY(50%);
+}
+
 .div-info p {
     width: calc(50% - 30px);
 }
@@ -73,6 +77,16 @@ body{
 
 .div-title p {
     font-size: 25px;
+}
+
+.btn-back {
+    background: url('./assets/img/btn-close.png') no-repeat center center;
+    background-size: 100% 100%;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
 }
 
 .fc-title           { color: #4373c3; }
@@ -163,3 +177,36 @@ body{
 
 .m0 {margin: 0px;} .mt0 {margin-top: 0px;} .mr0 {margin-right: 0px;} .mb0 {margin-bottom: 0px;} .ml0 {margin-left: 0px;}
 .p0{padding: 0px;} .pt0 {padding-top: 0px;} .pr0 {padding-right: 0px;} .pb0 {padding-bottom: 0px;} .pl0 {padding-left: 0px;}
+
+.lh-5 { line-height: 5px; }
+.lh-10 { line-height: 10px; }
+.lh-11 { line-height: 11px; }
+.lh-12 { line-height: 12px; }
+.lh-13 { line-height: 13px; }
+.lh-14 { line-height: 14px; }
+.lh-15 { line-height: 15px; }
+.lh-16 { line-height: 16px; }
+.lh-17 { line-height: 17px; }
+.lh-18 { line-height: 18px; }
+.lh-19 { line-height: 19px; }
+.lh-20 { line-height: 20px; }
+.lh-21 { line-height: 21px; }
+.lh-22 { line-height: 22px; }
+.lh-23 { line-height: 23px; }
+.lh-24 { line-height: 24px; }
+.lh-25 { line-height: 25px; }
+.lh-30 { line-height: 30px; }
+.lh-35 { line-height: 35px; }
+.lh-40 { line-height: 40px; }
+.lh-45 { line-height: 45px; }
+.lh-50 { line-height: 50px; }
+.lh-55 { line-height: 55px; }
+.lh-60 { line-height: 60px; }
+.lh-65 { line-height: 65px; }
+.lh-70 { line-height: 70px; }
+.lh-75 { line-height: 75px; }
+.lh-80 { line-height: 80px; }
+.lh-85 { line-height: 85px; }
+.lh-90 { line-height: 90px; }
+.lh-95 { line-height: 95px; }
+.lh-100 { line-height: 100px; }
