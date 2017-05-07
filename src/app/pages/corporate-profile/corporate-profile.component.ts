@@ -45,7 +45,6 @@ export class CorporateProfileComponent implements OnInit, AfterViewInit {
     private serviceService: ServiceService,
     private ppService: PastperformanceService
   ) {
-    this.
     this.currentAccount.id = '1'
     this.currentAccount.name = 'Eastern Foundry'
     this.currentAccount.email = 'eastern@foundry.com'
