@@ -32,7 +32,7 @@ export class PastPerformanceComponent implements OnInit {
     private pastPerformanceService: PastperformanceService,
     private route: ActivatedRoute,
     private router: Router,
-    private location: Location
+    public location: Location
   ) { 
     this.currentPastPerformance.id = this.route.snapshot.params['id']
     this.currentPastPerformance = this.pastPerformanceService.getPastPerformancebyID(this.currentPastPerformance.id)

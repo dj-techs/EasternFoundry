@@ -30,7 +30,7 @@ export class ProfileComponent implements OnInit {
     private userService: UserService,
     private route: ActivatedRoute,
     private router: Router,
-    private location: Location  
+    public location: Location  
   ) {
     this.currentUser.id = this.route.snapshot.params['id'];
     this.currentUser = this.userService.getUserbyID(this.currentUser.id)

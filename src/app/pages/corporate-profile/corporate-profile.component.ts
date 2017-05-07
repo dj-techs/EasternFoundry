@@ -38,7 +38,7 @@ export class CorporateProfileComponent implements OnInit, AfterViewInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private location: Location,
+    public location: Location,
     private userService: UserService,
     private companyService: CompanyService,
     private productService: ProductService,
