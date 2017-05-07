@@ -19,7 +19,7 @@ export class PastPerformance {
         }
     ]
     synopsis: string
-    techinical: string
+    technical: string
     management: string
     other: string
 }

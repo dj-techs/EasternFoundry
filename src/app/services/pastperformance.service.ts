@@ -56,7 +56,7 @@ export class PastperformanceService {
       }
     ]
     temp.synopsis = 'Synopsis lorem the quick brown fox jumps over the lazy dog lorem the quick brown fox jumps over the lazy dog lorem the quick brown fox jumps over the lazy dog lorem the quick brown fox jumps over the lazy dog'
-    temp.techinical = 'Synopsis lorem the quick brown fox jumps over the lazy dog lorem the quick brown fox jumps over the lazy dog lorem the quick brown fox jumps over the lazy dog lorem the quick brown fox jumps over the lazy dog'
+    temp.technical = 'Synopsis lorem the quick brown fox jumps over the lazy dog lorem the quick brown fox jumps over the lazy dog lorem the quick brown fox jumps over the lazy dog lorem the quick brown fox jumps over the lazy dog'
     temp.management = 'Synopsis lorem the quick brown fox jumps over the lazy dog lorem the quick brown fox jumps over the lazy dog lorem the quick brown fox jumps over the lazy dog lorem the quick brown fox jumps over the lazy dog'
     temp.other = 'Synopsis lorem the quick brown fox jumps over the lazy dog lorem the quick brown fox jumps over the lazy dog lorem the quick brown fox jumps over the lazy dog lorem the quick brown fox jumps over the lazy dog'
     if(id == '2') {

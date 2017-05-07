@@ -12,14 +12,12 @@ export class CompanyService {
 
   constructor(private http:Http) {
     this.authHttp = new AuthHttp(http)
-   }
+  }
 
-    getList(id: string): Observable<Company[]> {
-      var response =  this.authHttp.get(environment.apiRoot + "/coporates")
-      .map(response => <[Company]> response.json())
-
-      return response
-    }
-
+  getCompanyByID(id: string): Observable<Company[]> {
+    var response =  this.authHttp.get(environment.apiRoot + "/company/" + id )
+    .map(response => <[Company]> response.json())
+    return response
+  }
 
 }

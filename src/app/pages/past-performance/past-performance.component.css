@@ -1,0 +1,24 @@
+.div-title div{
+    width: calc(100% - 373px);
+    height: 3px;
+    background-color: #757575;
+    margin-bottom: 8px;
+}
+
+.employee .div-title>div{
+    width: calc(100% - 262px);
+}
+
+.employee>div:last-child {
+    margin-left: 100px;
+    margin-right: 100px;
+    height: 250px;
+}
+
+.write-up .div-title div{
+    width: calc(100% - 230px);
+}
+
+.write-up>div:last-child {
+    margin: auto;
+}

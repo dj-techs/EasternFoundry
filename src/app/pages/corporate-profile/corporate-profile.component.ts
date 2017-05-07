@@ -9,6 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { UserService } from '../../services/user.service'
+import { CompanyService } from  '../../services/company.service'
 import { ProductService } from '../../services/product.service'
 import { ServiceService } from '../../services/service.service'
 import { PastperformanceService } from '../../services/pastperformance.service'
@@ -39,11 +40,12 @@ export class CorporateProfileComponent implements OnInit, AfterViewInit {
     private router: Router,
     private location: Location,
     private userService: UserService,
+    private companyService: CompanyService,
     private productService: ProductService,
     private serviceService: ServiceService,
     private ppService: PastperformanceService
   ) {
-    console.log('initializing');
+    this.
     this.currentAccount.id = '1'
     this.currentAccount.name = 'Eastern Foundry'
     this.currentAccount.email = 'eastern@foundry.com'
@@ -230,7 +232,11 @@ export class CorporateProfileComponent implements OnInit, AfterViewInit {
   }
 
   toUserProfile(id: string) {
-    this.router.navigate(['user-profile',id]);
+    this.router.navigate(['user-profile',id])
+  }
+
+  toPastPerformance(id: string) {
+    this.router.navigate(['past-performance',id])
   }
 
 }
