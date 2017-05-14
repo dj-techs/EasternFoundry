@@ -89,6 +89,14 @@ body{
     right: 15px;
 }
 
+input {
+    height: 34px;
+    margin-top: 8px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
 .fc-title           { color: #4373c3; }
 .fc-subtitle        { color: #3e3e3e; }
 .fc-white           { color: white; }

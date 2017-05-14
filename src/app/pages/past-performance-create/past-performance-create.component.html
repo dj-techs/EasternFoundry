@@ -1,3 +1,104 @@
-<p>
-  past-performance-create works!
-</p>
+<div class="past-performance col-xs-12 clear">
+    <div class="div-title col-xs-12">
+        <img src="./assets/img/performance.png">
+        <p>PAST PERFORMANCE</p>
+        <div></div>
+    </div>
+    <div class="container">
+        <div class="col-xs-6 left" [style.border-right] = "'3px solid #757575'">
+            <div class="col-xs-12 srow">
+                <p class="left lh-50">Title of PP</p>
+                <input type="text" placeholder="Past Performance" class="right" [style.width]="''+ppInputWidth+'px'">
+            </div>
+            <div class="col-xs-12 srow">
+                <p class="left lh-50">Agency</p>
+                <selector [items]='agencyType' [width] = 'ppInputWidth' class="right"></selector>
+            </div>
+            <div class="col-xs-12 srow">
+                <p class="left lh-50">Office</p>
+                <selector [items]='agencyType' [width] = 'ppInputWidth' class="right"></selector>
+            </div>
+            <div class="col-xs-12 srow">
+                <p class="left lh-50">Cleared</p>
+                <selector [items]='agencyType' [width] = 'ppInputWidth' class="right"></selector>
+            </div>
+            <div class="col-xs-12">
+                <p class="left lh-50">Image</p>
+                <div class="right text-container div-uploadImage" [style.width]="''+ppInputWidth+'px'">
+                    <p class="left lh-50" [style.cursor] = "'pointer'" (click) = 'uploadImage()' >Upload Image</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 right">
+            <div class="col-xs-12 srow">
+                <p class="left lh-25">Functional<br>area in PP</p>
+                <input type="text" placeholder="Functional area in PP" class="right" [style.width]="''+ppInputWidth+'px'">
+            </div>
+            <div class="col-xs-12 srow">
+                <p class="left lh-50">Start Date</p>
+                <selector [items]='agencyType' [width] = 'ppInputWidth' class="right"></selector>
+            </div>
+            <div class="col-xs-12 srow">
+                <p class="left lh-50">End Date</p>
+                <selector [items]='agencyType' [width] = 'ppInputWidth' class="right"></selector>
+            </div>
+            <div class="col-xs-12 srow">
+                <p class="left lh-50">Rating</p>
+                <rating [(ngModel)]="rate" [max]="5" [readonly]="isReadonly" class="right srow" [style.line-height]="'50px'"></rating>
+            </div>
+            <div class="col-xs-12 srow mt15">
+                <p class="left lh-25">Location<br>(zipcode)</p>
+                <input type="text" placeholder="Your zipcode" class="right" [style.width]="''+ppInputWidth+'px'">
+            </div>
+            <div class="col-xs-12 srow mt15">
+                <p class="left lh-25">Value of work<br>done ($)</p>
+                <selector [items]='agencyType' [width] = 'ppInputWidth' class="right"></selector>
+            </div>
+            <div class="col-xs-12 srow mt15">
+                <p class="left lh-50"># of FTE</p>
+                <selector [items]='agencyType' [width] = 'ppInputWidth' class="right"></selector>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="employee col-xs-12 clear">
+    <div class="div-title col-xs-12">
+        <img src="./assets/img/employee.png">
+        <p>EMPLOYEES</p>
+        <div></div>
+    </div>
+    <div [style.width]="''+employeeWidth+'px'">
+        <selector [items]='agencyType' [width] = 'employeeWidth'></selector>
+        <div class="text-container" [style.height]="'300px'"><textarea></textarea></div>
+    </div>
+</div>
+
+<div class="write-up col-xs-12 clear">
+    <div class="div-title col-xs-12">
+        <img src="./assets/img/write-up.png">
+        <p>WRITE UP</p>ˀ
+        <div></div>
+    </div>
+    <div [style.width]="''+writeWidth+'px'">
+        <div class="text-container col-xs-12" [style.height]="'200px'"><p class="col-xs-12">Synopisis</p><textarea></textarea></div>
+        <div class="text-container col-xs-6" [style.height]="'300px'"><p class="col-xs-12">Technical Challenge, approach and outcome</p><textarea></textarea></div>
+        <div class="text-container col-xs-6" [style.height]="'300px'"><p class="col-xs-12">Management Challenge, approach and outcome</p><textarea></textarea></div>
+        <div class="text-container col-xs-12" [style.height]="'200px'"><p class="col-xs-12">Other</p><textarea></textarea></div>
+    </div>
+</div>
+
+<div class="relates-to col-xs-12 clear">
+    <div class="div-title col-xs-12">
+        <img src="./assets/img/profile/capabilities-1.png">
+        <p>CAPABILITIES THIS PP RELATES TO</p>
+        <div></div>
+    </div>
+    <div [style.width]="''+writeWidth+'px'">
+        <div class="col-xs-6 srow"><input type="text" placeholder="Capability 1" class="left" [style.width]="'calc(100% - 50px)'"><input type="checkbox" class="right" [style.width] = "'50px'"></div>
+        <div class="col-xs-6 srow"><input type="text" placeholder="Capability 2" class="left" [style.width]="'calc(100% - 50px)'"><input type="checkbox" class="right" [style.width] = "'50px'"></div>
+        <div class="col-xs-6 srow"><input type="text" placeholder="Capability 3" class="left" [style.width]="'calc(100% - 50px)'"><input type="checkbox" class="right" [style.width] = "'50px'"></div>
+        <div class="col-xs-6 srow"><input type="text" placeholder="Capability 4" class="left" [style.width]="'calc(100% - 50px)'"><input type="checkbox" class="right" [style.width] = "'50px'"></div>
+        <div class="col-xs-12" [style.margin]="'auto'"><button class="right">save</button></div>
+    </div>
+</div>

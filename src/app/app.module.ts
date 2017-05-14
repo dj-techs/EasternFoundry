@@ -18,6 +18,7 @@ import { CarouselModule } from 'ng2-bootstrap/carousel';
 import { BsDropdownModule } from 'ng2-bootstrap/dropdown';
 import { ButtonsModule } from 'ng2-bootstrap/buttons';
 import { ChartsModule } from 'ng2-charts';
+import { SelectModule } from 'ng2-select';
 
 import { ROUTES } from './app.routes';
 import { BentBarsChartComponent } from './components/bent-bars-chart/bent-bars-chart.component';
@@ -26,6 +27,7 @@ import { ExpChartComponent } from './components/exp-chart/exp-chart.component';
 import { CareerComponent } from './components/career/career.component';
 import { BarchartComponent } from './components/barchart/barchart.component';
 import { AvailablebarComponent } from './components/availablebar/availablebar.component';
+import { SelectorComponent } from './components/selector/selector.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,7 @@ import { AvailablebarComponent } from './components/availablebar/availablebar.co
     ExpChartComponent,
     CareerComponent,
     BarchartComponent,    
-    AvailablebarComponent
+    AvailablebarComponent, SelectorComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -49,6 +51,7 @@ import { AvailablebarComponent } from './components/availablebar/availablebar.co
     CarouselModule.forRoot(),
     BsDropdownModule.forRoot(),
     ButtonsModule.forRoot(),
+    SelectModule,
     ChartsModule,
     BrowserModule,
     FormsModule,

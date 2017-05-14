@@ -1,0 +1,10 @@
+<div [style.width]="getWidth()" [style.display]="'inline-block'">
+  <ng-select [allowClear]="true"
+              [items]="items"
+              (data)="refreshValue($event)"
+              (selected)="selected($event)"
+              (removed)="removed($event)"
+              (typed)="typed($event)"
+              placeholder="Select Degree">
+  </ng-select>
+</div>
