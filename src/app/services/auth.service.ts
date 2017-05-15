@@ -1,10 +1,11 @@
 import { Inject ,Injectable } from '@angular/core'
-import { Http, Response, RequestOptionsArgs, Headers } from '@angular/http'
+import { Http, Response, RequestOptions, RequestOptionsArgs, Headers } from '@angular/http'
 import { Router, ActivatedRoute, Params } from '@angular/router'
 import { Location } from '@angular/common';
 import { Observable } from 'rxjs/Observable'
 
 import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/toPromise'
 
 import { environment } from '../../environments/environment'
 
@@ -35,64 +36,46 @@ export class AuthService {
     this.authHttp = new AuthHttp(http)
 
     // check if the user is logged or if token is expired. If true then login
-    if (!this.isLoggedIn() || this.isTokenExpired()) {
-      this.doLogout()
+    if (this.isLoggedIn()) {
       this.router.navigateByUrl("/login")
     } else { // else if already logged in go to corporate profile page
-      this.router.navigateByUrl("/login")
+      this.router.navigateByUrl("/companies")
     }
   }
 
   doLogin(username, password) {
     let body = {
-      email: username,
-      password: password,
-      ttl: 1209600000
+      username: username,
+      password: password
     }
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
 
-    let opts: RequestOptionsArgs = {}
-    this.http.post(environment.apiRoot + "/users/login", body).subscribe(
-        (result => {
-          if (result.status == 200) { //login OK
-            this.loginResponse = result.json()
+    this.http.post(environment.apiRoot + "login", body, options).toPromise()
+           .then(this.extractData)
+           .catch(this.handleErrorPromise);
+  }
 
-            //save token info into localStorage
-            localStorage.setItem('id_token', this.loginResponse.id)
-            let expirationDays = this.loginResponse.ttl / 60 / 60 / 24
-            let tokenExpirationDate = new Date()
-            let tokenExpirationTime = tokenExpirationDate.setDate(tokenExpirationDate.getDate() + expirationDays)
-            localStorage.setItem('token_expiration_date', tokenExpirationTime.toString())
-            localStorage.setItem('userId', this.loginResponse.userId)            
-          }
-        }),
-        (err => {
-          if (err.status == 401) { //invalid username or password
-            //show warning
-            console.log("I'm out")
-          }
-        })
-    )
+  private extractData(res: Response) {
+  	let body = res.json();
+    console.log(body)
+    return body.data || {};
+  }
+  private handleErrorObservable (error: Response | any) {
+  	console.error(error.message || error);
+	  return Observable.throw(error.message || error);
+  }
+  private handleErrorPromise (error: Response | any) {
+	  console.error(error.message || error);
+	  return Promise.reject(error.message || error);
   }
 
   doLogout(redirect = null) {
-    localStorage.removeItem('id_token')
-    localStorage.removeItem('token_expiration_date')
-    localStorage.removeItem('userId')
+    localStorage.removeItem('token')
   }
 
   isLoggedIn() {
-    return localStorage.getItem('id_token') != null
-  }
-
-  isTokenExpired() {
-    let now = new Date().getTime()
-    let token_expiration = <number><any>localStorage.getItem('token_expiration_date')
-
-    return (now >= token_expiration)
-  }
-
-  getUser(userId) {
-    return this.authHttp.get(environment.apiRoot + "/users/" + userId)
+    return localStorage.getItem('token') != null
   }
 }
 

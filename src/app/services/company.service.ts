@@ -14,8 +14,14 @@ export class CompanyService {
     this.authHttp = new AuthHttp(http)
   }
 
+  getComapnies(): Observable<Company[]> {
+    var response =  this.authHttp.get(environment.apiRoot + "company/" )
+    .map(response => <[Company]> response.json())
+    return response
+  }
+
   getCompanyByID(id: string): Observable<Company[]> {
-    var response =  this.authHttp.get(environment.apiRoot + "/company/" + id )
+    var response =  this.authHttp.get(environment.apiRoot + "company/" + id )
     .map(response => <[Company]> response.json())
     return response
   }

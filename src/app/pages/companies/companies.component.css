@@ -1,0 +1,12 @@
+.avatar {
+    width: 150px;
+    height: 150px;
+    margin-right: 30px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+
+.text-container:hover {
+    transition: all 0.4s;
+    background-color: #585878;
+}

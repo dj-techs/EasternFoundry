@@ -14,3 +14,7 @@
 button {
     margin-top: 10px;
 }
+
+.input-group input {
+    margin-top: 0px;
+}

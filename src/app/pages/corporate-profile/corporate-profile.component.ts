@@ -238,4 +238,8 @@ export class CorporateProfileComponent implements OnInit, AfterViewInit {
     this.router.navigate(['past-performance',id])
   }
 
+  editCompany() {
+    this.router.navigate(['corporatre-profile-edit',this.currentAccount.id])
+  }
+
 }

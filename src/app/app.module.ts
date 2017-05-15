@@ -6,10 +6,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
-import { ProfileComponent } from './pages/profile/profile.component';
+import { CompaniesComponent } from './pages/companies/companies.component';
 import { CorporateProfileComponent } from './pages/corporate-profile/corporate-profile.component';
+import { CorporateProfileEditComponent } from './pages/corporate-profile-edit/corporate-profile-edit.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { PastPerformanceComponent } from './pages/past-performance/past-performance.component';
-import { PastPerformanceCreateComponent } from './pages/past-performance-create/past-performance-create.component';
+import { PastPerformanceEditComponent } from './pages/past-performance-edit/past-performance-edit.component';
 import { NoContentComponent } from './pages/no-content/no-content.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -36,14 +38,14 @@ import { SelectorComponent } from './components/selector/selector.component';
     ProfileComponent,
     CorporateProfileComponent,
     PastPerformanceComponent,
-    PastPerformanceCreateComponent,
+    PastPerformanceEditComponent,
     NoContentComponent,
     BentBarsChartComponent,
     ColorCommentBoxComponent,
     ExpChartComponent,
     CareerComponent,
     BarchartComponent,    
-    AvailablebarComponent, SelectorComponent
+    AvailablebarComponent, SelectorComponent, CompaniesComponent, CorporateProfileEditComponent
   ],
   imports: [
     NgbModule.forRoot(),
