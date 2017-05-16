@@ -4,6 +4,9 @@ export class Company {
     email: string
     avatar: string
     contactnumber: string
+    city: string
+    state: string
+    zip: string
     address: string
     lastupdated: string
     information_accuracy: number

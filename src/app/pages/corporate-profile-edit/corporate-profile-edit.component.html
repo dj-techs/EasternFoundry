@@ -1,3 +1,236 @@
-<p>
-  corporate-profile-edit works!
-</p>
+<div class="basic-info col-xs-12 clear">
+  <div class="container">
+    <div class="col-xs-12 col-md-6">
+        <div class="col-xs-12 srow info-input">
+            <p class="left">Name</p>
+            <input class="right" type="text" placeholder="Company name." [(ngModel)] = 'this.currentAccount.name'>
+        </div>
+        <div class="col-xs-12 mt10">
+            <p class="left lh-50 mt10" [style.width]="'80px'">Logo</p>
+            <div class="text-container right text-center" [style.min-height] = "'150px'" [style.width] = "'calc(100% - 100px)'">
+                <p class="col-xs-12 vcenter link">Upload Logo</p>
+            </div>
+        </div>
+        <!--<div class="col-xs-12" [style.height]="'130px'">
+            <p class="left">Set-Aside</p>
+            <div class="text-container right" [style.height]="'130px'" [style.width] = "infoInputWidth+'px'">
+                <div class="col-xs-12" [style.overflow] = "'auto'" [style.height]="'90px'">
+                    <div class="ssrow"><input type="checkbox" class="left"><p >XXX</p></div>
+                    <div class="ssrow"><input type="checkbox" class="left"><p >XXX</p></div>
+                    <div class="ssrow"><input type="checkbox" class="left"><p >XXX</p></div>
+                </div>
+            </div>
+        </div>-->
+        <!--<div class="col-xs-12 srow">
+            <p class="left">DCAA</p>
+            <input type="checkbox">
+        </div>-->
+        <!--<div class="col-xs-12" [style.height]="'130px'">
+            <p class="left">FCL</p>
+            <div class="text-container right" [style.height]="'130px'" [style.width] = "infoInputWidth+'px'">
+                <div class="col-xs-12" [style.overflow] = "'auto'" [style.height]="'90px'">
+                    <div class="ssrow"><input type="checkbox" class="left"><p >XXX</p></div>
+                    <div class="ssrow"><input type="checkbox" class="left"><p >XXX</p></div>
+                    <div class="ssrow"><input type="checkbox" class="left"><p >XXX</p></div>
+                </div>
+            </div>
+        </div>-->
+        <!--<div class="col-xs-12" [style.height]="'130px'">
+            <p class="left">Schedules</p>
+            <div class="text-container right" [style.height]="'130px'" [style.width] = "infoInputWidth+'px'">
+            </div>
+        </div>
+        <div class="col-xs-12" [style.height]="'130px'">
+            <p class="left">Major<br>Vehicles</p>
+            <div class="text-container right" [style.height]="'130px'" [style.width] = "infoInputWidth+'px'">
+            </div>
+        </div>-->
+    </div>
+    <div class="col-xs-12 col-md-6">
+        <div class="col-xs-12 srow info-img-input"><img src="../assets/img/glyphicon/email-1.png" class="left"><p class="left">Email</p><input type="text" [(ngModel)] = 'this.currentAccount.email'></div>
+        <div class="col-xs-12 srow info-img-input mt10"><img src="../assets/img/glyphicon/phone-2.png" class="left"><p class="left" style="line-height: 25px;">Contact<br> Number</p><input type="text" [(ngModel)] = 'this.currentAccount.contactnumber'></div>
+        <div class="col-xs-12 srow info-img-input mt10"><img src="../assets/img/glyphicon/post-1.png" class="left"><p class="left">City</p><input type="text"  [(ngModel)] = 'this.currentAccount.city'></div>
+        <div class="col-xs-12 srow info-img-input mt10"><img src="../assets/img/profile/state.png" class="left"><p class="left">State</p><input type="text"  [(ngModel)] = 'this.currentAccount.state'></div>
+        <div class="col-xs-12 srow info-img-input mt10"><img src="../assets/img/profile/zip.png" class="left"><p class="left">Zip</p><input type="text"  [(ngModel)] = 'this.currentAccount.zip'></div>
+    </div>
+  </div>
+</div> 
+
+<!--<div class="employee col-xs-12 clear">
+    <div class="div-title col-xs-12">
+        <img src="./assets/img/employee.png">
+        <p>EMPLOYEES</p>
+        <div></div>
+    </div>
+    <div class="container">
+      <div class="col-xs-12">
+        <div class="srow">
+            <span class="col-xs-6 col-sm-8 col-md-10 text-center" >Email</span>
+            <span class="col-xs-6 col-sm-4 col-md-2 text-center" >Leadership</span>
+        </div>
+        <div class="srow input-employee text-center">
+          <input class="col-xs-6 col-sm-8 col-md-10">
+          <div class="col-xs-6 col-sm-4 col-md-2 text-center">
+            <input type="checkbox" [style.height] = "'50px'" [style.margin]="'0'">
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 text-center">
+          <button class="mr20" (click) = 'addEmployee()'>ADD</button>
+          <button>REMOVE</button>
+      </div>
+    </div>
+</div>-->
+
+<div class="products col-xs-12 clear">
+  <div class="div-title col-xs-12">
+      <img src="./assets/img/product.png">
+      <p>PRODUCTS</p>
+      <div></div>
+  </div>
+  <div *ngFor='let product of this.products' class="container mt50">
+    <div class="col-xs-12 srow">
+        <div class="col-xs-12 col-md-6 right">
+            <div class="col-xs-12 srow info-input">
+                <p class="left">More info</p>
+                <input class="right" type="text" placeholder="URL to show more info." [(ngModel)]='product.moreinfolink'>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="col-xs-12 col-md-6 left">
+            <div class="col-xs-12 srow info-input">
+                <p class="left">Product name</p>
+                <input class="right" type="text" placeholder="Product name." [(ngModel)]='product.name'>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 right">
+            <div class="col-xs-12 srow info-input">
+                <p class="left">Video demo</p>
+                <input class="right" type="text" placeholder="URL to Video demo." [(ngModel)]='product.viewdemolink'>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="col-xs-12 col-sm-6">
+            <p class="col-xs-12 lh-50">Product Description</p>
+            <div class="col-xs-12 text-container" [style.height]="'300px'"><textarea [(ngModel)]='product.description'></textarea></div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <p class="col-xs-12 lh-50">Agencies using it today</p>
+            <div class="col-xs-12 text-container" [style.overflow] = "'auto'" [style.height]="'300px'">
+                <div class="col-xs-12" *ngFor='let customer of '><input type="checkbox" class="left"><p >XXX</p></div>
+                <div class="col-xs-12"><input type="checkbox" class="left"><p >XXX</p></div>
+                <div class="col-xs-12"><input type="checkbox" class="left"><p >XXX</p></div>
+                <div class="col-xs-12"><input type="checkbox" class="left"><p >XXX</p></div>
+                <div class="col-xs-12"><input type="checkbox" class="left"><p >XXX</p></div>
+                <div class="col-xs-12"><input type="checkbox" class="left"><p >XXX</p></div>
+                <div class="col-xs-12"><input type="checkbox" class="left"><p >XXX</p></div>
+                <div class="col-xs-12"><input type="checkbox" class="left"><p >XXX</p></div>
+                <div class="col-xs-12"><input type="checkbox" class="left"><p >XXX</p></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 mt30">
+      <div class="col-xs-12 col-md-4 srow">
+          <p class="left">Will you Customise the product?</p>
+          <button class="right mt5" [class.btn-primary] = 'product.customization' (click)='product.customization = !product.customization'>
+                  {{product.customization?'YES':'NO'}}
+          </button>
+      </div>
+      <div class="col-xs-12 col-md-4 srow">
+          <p class="left">Do you provide training?</p>
+          <button class="right mt5" [class.btn-primary] = 'product.training' (click)='product.training = !product.training'>
+                  {{product.training?'YES':'NO'}}
+          </button>
+      </div>
+      <div class="col-xs-12 col-md-4 srow">
+          <p class="left">Do you provide maintience?</p>
+          <button class="right mt5" [class.btn-primary] = 'product.maintenance' (click)='product.maintenance = !product.maintenance'>
+                  {{product.maintenance?'YES':'NO'}}
+          </button>
+      </div>
+    </div>
+    <div class="col-xs-12 fs-20 mt20">Defense</div>
+    <div class="col-xs-12" *ngFor='let customer of product.customers.defense'>
+      <div class="col-xs-12 col-md-6 srow info-input">
+        <p class="left">Name</p>
+        <input class="right" [(ngModel)]='customer.name'>
+      </div>
+      <div class="col-xs-12 col-md-6 srow info-input">
+        <p class="left">Avatar</p>
+        <input class="right" [(ngModel)]='customer.avatar'>
+      </div>
+    </div>
+    <div class="col-xs-12 text-center   mt20   mb20">
+      <button class="mr10">ADD</button>
+      <button>REMOVE</button>
+    </div>
+    <div class="col-xs-12 fs-20">Civilian</div>
+    <div class="col-xs-12" *ngFor='let customer of product.customers.civilian'>
+      <div class="col-xs-12 col-md-6 srow info-input">
+        <p class="left">Name</p>
+        <input class="right" [(ngModel)]='customer.name'>
+      </div>
+      <div class="col-xs-12 col-md-6 srow info-input">
+        <p class="left">Avatar</p>
+        <input class="right" [(ngModel)]='customer.avatar'>
+      </div>
+    </div>
+    <div class="col-xs-12 text-center   mt20   mb20">
+      <button class="mr10">ADD</button>
+      <button>REMOVE</button>
+    </div>
+    <div class="col-xs-12 fs-20">Commercial</div>
+    <div class="col-xs-12" *ngFor='let customer of product.customers.commercial'>
+      <div class="col-xs-12 col-md-6 srow info-input">
+        <p class="left">Name</p>
+        <input class="right" [(ngModel)]='customer.name'>
+      </div>
+      <div class="col-xs-12 col-md-6 srow info-input">
+        <p class="left">Avatar</p>
+        <input class="right" [(ngModel)]='customer.avatar'>
+      </div>
+    </div>
+    <div class="col-xs-12 text-center   mt20   mb20">
+      <button class="mr10">ADD</button>
+      <button>REMOVE</button>
+    </div>
+    <div class="col-xs-12 div-split-line"></div>
+  </div>
+</div>
+
+<div class="services col-xs-12 clear">
+  <div class="div-title col-xs-12">
+      <img src="./assets/img/profile/capabilities-1.png">
+      <p>Services</p>
+      <div></div>
+  </div>
+  <div class="container">
+    <div class="col-xs-12" *ngFor='let service of this.services'>
+      <div class="col-xs-12 fs-25 mt20 mb20">{{service.name}}</div>
+      <div class="col-xs-12" *ngFor='let feature of service.feature'>
+        <div class="col-xs-12 col-sm-6 srow info-input">
+          <p class="left">Title</p>
+          <input class="right" [(ngModel)]='feature.title'>
+        </div>
+        <div class="col-xs-12 col-sm-6 srow info-input">
+          <p class="left">Score</p>
+          <input class="right" [(ngModel)]='feature.score'>
+        </div>
+      </div>
+      <div class="col-xs-12 text-center   mt20   mb20">
+        <button class="mr10">ADD</button>
+        <button>REMOVE</button>
+      </div>
+      <div class="col-xs-12 col-sm-6 srow info-input" *ngFor='let skill of service.skills'>
+          <p class="left">Skill</p>
+          <input class="right" value="{{skill}}">
+      </div>
+      <div class="col-xs-12 text-center   mt20   mb20">
+        <button class="mr10">ADD</button>
+        <button>REMOVE</button>
+      </div>
+    </div>
+  </div>
+</div>

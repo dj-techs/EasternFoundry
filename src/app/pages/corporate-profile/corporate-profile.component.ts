@@ -45,76 +45,8 @@ export class CorporateProfileComponent implements OnInit, AfterViewInit {
     private serviceService: ServiceService,
     private ppService: PastperformanceService
   ) {
-    this.currentAccount.id = '1'
-    this.currentAccount.name = 'Eastern Foundry'
-    this.currentAccount.email = 'eastern@foundry.com'
-    this.currentAccount.avatar = '../../assets/img/company-account.png'
-    this.currentAccount.contactnumber = '(202) 725-7483'
-    this.currentAccount.address = 'Washington, DC'
-    this.currentAccount.information_accuracy = 5
-    this.currentAccount.lastupdated = 'Dec, 2016'
-    this.currentAccount.leadership = [
-      {userid: '1'},
-      {userid: '2'}
-    ]
-    this.currentAccount.product = [
-      {productid: '1'},
-      {productid: '2'}
-    ]
-    this.currentAccount.service = [
-      {serviceid: '1'},
-      {serviceid: '2'}
-    ]
-    this.currentAccount.pastperformance = [
-      {pastperformanceid: '1'},
-      {pastperformanceid: '2'}
-    ]
-    this.currentAccount.agencyexperience = [
-      {
-        title: 'Years Agency experience',
-        score: 90
-      },
-      {
-        title: '$ (M) of agency revenue',
-        score: 48
-      },
-      {
-        title: 'Proposals written',
-        score: 100
-      },
-      {
-        title: 'Relationships',
-        score: 30
-      }
-    ]
-    this.currentAccount.vehicles = [
-      {
-        type: 'Vehicle type 1',
-        quantity: 3
-      },
-      {
-        type: 'Vehicle type 2',
-        quantity: 6
-      },
-      {
-        type: 'Vehicle type 3',
-        quantity: 10
-      }
-    ]
-    this.currentAccount.schedule = [
-      {
-        date: 'Dec, 2016',
-        content: 'Schedule 1'
-      },
-      {
-        date: 'Jan, 2017',
-        content: 'Schedule 2'
-      },
-      {
-        date: 'May, 2017',
-        content: 'Schedule 3'
-      }
-    ]
+
+    this.currentAccount = this.companyService.getTestCompany()
 
     for (let i of this.currentAccount.leadership) {
       this.users.push(userService.getUserbyID(i.userid))
@@ -143,8 +75,6 @@ export class CorporateProfileComponent implements OnInit, AfterViewInit {
         this.CQAC.push('Type: ' + j.type + ', Awarded: ' + j.awarded + ', Expriation: ' + j.expiration)
       }
     }
-
-    console.log(this.pastperformances);
   }
 
   ngOnInit() {
@@ -239,7 +169,7 @@ export class CorporateProfileComponent implements OnInit, AfterViewInit {
   }
 
   editCompany() {
-    this.router.navigate(['corporatre-profile-edit',this.currentAccount.id])
+    this.router.navigate(['corporate-profile-edit',this.currentAccount.id])
   }
 
 }

@@ -15,6 +15,7 @@ export class PastPerformanceEditComponent implements OnInit {
   ppInputWidth: number = 300;
   employeeWidth: number = 600;
   writeWidth: number = 800;
+  rate: number = 0
 
   constructor() { }
 
